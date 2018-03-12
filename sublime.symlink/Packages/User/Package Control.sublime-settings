@@ -1,0 +1,23 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"DocBlockr",
+		"EditorConfig",
+		"MarkdownEditing",
+		"Material Theme",
+		"Origami",
+		"Package Control",
+		"Pretty JSON",
+		"SublimeCodeIntel",
+		"Terminal",
+	],
+	"repositories":
+	[
+		"https://github.com/sindresorhus/editorconfig-sublime"
+	]
+}

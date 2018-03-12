@@ -1,4 +1,5 @@
-if test ! $(which spoof)
+if test $(which yarn)
 then
-  sudo npm install spoof -g
+  echo "SeTtInG Up GlObAl NoDe PaCkAgEs."
+  yarn global add spoof
 fi

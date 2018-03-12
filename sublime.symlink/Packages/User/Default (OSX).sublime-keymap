@@ -1,0 +1,10 @@
+[
+	{ "keys": ["super+v"], "command": "paste_and_indent" },
+	{ "keys": ["super+shift+v"], "command": "paste" },
+	{ "keys": ["super+`"], "command": "reindent"},
+
+
+	// Origami plugin
+	{ "keys": ["super+k", "shift+space"], "command": "destroy_pane", "args": {"direction": "self"} },
+]
+
