@@ -139,7 +139,7 @@ install_dotfiles () {
 
 setup_clone () {
   cd ~/
-  git clone git@github.com:slifty/dotfiles.git .dotfiles
+  git clone https://github.com/slifty/dotfiles.git .dotfiles
   cd .dotfiles
 }
 
