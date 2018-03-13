@@ -2,8 +2,7 @@
 #
 # bootstrap installs things.
 
-cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES_ROOT=~
 
 set -e
 
@@ -43,6 +42,7 @@ setup_gitconfig () {
     user ' - What is your github author email?'
     read -e git_authoremail
 
+    touch git/gitconfig.local.symlink
     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
     success 'gitconfig'
@@ -139,7 +139,7 @@ install_dotfiles () {
 
 setup_clone () {
   cd ~/
-  git clone --bare git@github.com:slifty/dotfiles.git .dotfiles
+  git clone git@github.com:slifty/dotfiles.git .dotfiles
   cd .dotfiles
 }
 
