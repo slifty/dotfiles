@@ -152,6 +152,10 @@ then
   fi
 fi
 
+# Run the pre-installers
+find . -name preinstall.sh | while read installer ; do sh -c "${installer}" ; done
+
+
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
 brew bundle
