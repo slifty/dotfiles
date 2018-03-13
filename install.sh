@@ -53,7 +53,6 @@ set_defaults () {
   sh -c "macos/set-defaults.sh"
 }
 
-
 link_file () {
   local src=$1 dst=$2
 
@@ -148,6 +147,7 @@ setup_clone () {
 }
 
 setup_gitconfig
+set_defaults
 install_dotfiles
 
 # Run the pre-installers
