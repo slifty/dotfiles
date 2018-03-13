@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
-
-DOTFILES_ROOT=~/.dotfiles
-
 set -e
-
-echo ''
 
 info () {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
@@ -129,7 +124,7 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
+  for src in $(find -H ~/.dotfiles -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     echo "linking $src"
     dst="$HOME/.$(basename "${src%.*}")"
