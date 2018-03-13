@@ -137,24 +137,20 @@ install_dotfiles () {
   done
 }
 
+setup_clone () {
+  cd ~/
+  git clone --bare git@github.com:slifty/dotfiles.git .dotfiles
+  cd .dotfiles
+}
+
 setup_gitconfig
 install_dotfiles
-
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
 
 # Run the pre-installers
 find . -name preinstall.sh | while read installer ; do sh -c "${installer}" ; done
 
+# Set this up as a git clone (it is assumed it started as a zip file)
+setup_clone
 
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
