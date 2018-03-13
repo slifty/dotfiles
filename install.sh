@@ -49,6 +49,10 @@ setup_gitconfig () {
   fi
 }
 
+set_defaults () {
+  sh -c "macos/set-defaults.sh"
+}
+
 
 link_file () {
   local src=$1 dst=$2
