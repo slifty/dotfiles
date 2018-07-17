@@ -19,3 +19,6 @@ mas install 992076693 # MindNode (2.5.7)
 mas install 880001334 # Reeder (3.1.2)
 mas install 506189836 # Harvest (2.1.5)
 mas install 1091189122 # Bear (1.4.3)
+
+echo "StArTiNg SeRvIcEs"
+brew services start postgresql
