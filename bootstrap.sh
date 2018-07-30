@@ -53,7 +53,7 @@ install_dotfiles () {
   do
     echo "linking $src"
     dst="$HOME/.$(basename "${src%.*}")"
-    if [ $(readling $dst) ]
+    if [ $(readlink $dst) ]
     then
       rm -fr "$dst"
     fi
