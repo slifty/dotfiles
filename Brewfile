@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/core'
+tap 'homebrew/cask-versions'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 
@@ -18,6 +19,7 @@ brew 'lame' # mp3 encoder, needed for audacity
 brew 'libevent'
 brew 'mas'
 brew 'node'
+brew 'jenv'
 brew 'openssl'
 brew 'postgresql'
 brew 'python'
@@ -58,6 +60,7 @@ cask 'google-backup-and-sync'
 cask 'harvest'
 cask 'iterm2'
 cask 'java'
+cask 'java8'
 cask 'little-snitch'
 cask 'loopback'
 cask 'micro-snitch'

@@ -3,3 +3,5 @@
 *.swp
 .sublime-workspace
 .sublime-project
+.java-version
+
