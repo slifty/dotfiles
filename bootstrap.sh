@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
-set -e
+set +e
 
 info () {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
