@@ -26,3 +26,6 @@ mas install 497799835 # XCode (9.4.1)
 
 echo "StArTiNg SeRvIcEs"
 brew services start postgresql
+
+echo "InStAlLiNg GeMs"
+sudo gem install cocoapods
