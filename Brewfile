@@ -88,6 +88,7 @@ cask 'versions'
 cask 'vlc'
 cask 'zulip'
 cask 'zoomus'
+cask 'zotero'
 
 # Fonts
 cask 'font-fira-code'

@@ -1,16 +1,45 @@
 {
-	"binary_file_patterns": [ // Files and folders to ignore in Goto / Fuzzy Search
-		"*.dds", "*.eot", "*.gif", "*.ico", "*.jar", "*.jpeg", "*.jpg", "*.min.js", "*.min.css", "*.pdf", "*.png", "*.swf", "*.tga", "*.ttf", "*.zip",
-		"bundle.css", "bundle.js", "package-lock.json",
-		"build/", "db/", "dist/", "node_modules/", "out/", "tmp/", "vendor/",
+	"binary_file_patterns":
+	[
+		"*.dds",
+		"*.eot",
+		"*.gif",
+		"*.ico",
+		"*.jar",
+		"*.jpeg",
+		"*.jpg",
+		"*.min.js",
+		"*.min.css",
+		"*.pdf",
+		"*.png",
+		"*.swf",
+		"*.tga",
+		"*.ttf",
+		"*.zip",
+		"bundle.css",
+		"bundle.js",
+		"package-lock.json",
+		"build/",
+		"db/",
+		"dist/",
+		"node_modules/",
+		"out/",
+		"tmp/",
+		"vendor/"
 	],
+	"color_scheme": "Packages/Color Scheme - Default/Mariana.tmTheme",
 	"draw_minimap_border": true,
 	"fade_fold_buttons": false,
 	"font_face": "Source Code Pro",
 	"font_size": 14,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
 	"tab_size": 2,
+	"theme": "Material-Theme-Palenight.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"word_wrap": "false"
 }
