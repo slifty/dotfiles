@@ -31,3 +31,6 @@
 
 [alias]
     cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+    brebase = "!git rebase -i `git merge-base HEAD master`"
+[pull]
+	default = current
