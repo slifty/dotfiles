@@ -30,7 +30,7 @@
 	email = slifty@gmail.com
 
 [alias]
-    cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
-    brebase = "!git rebase -i `git merge-base HEAD master`"
+    cleanup = !"f() { git branch --merged ${1-master} | grep  -v '\\*\\|master\\|${1-master}$\\|develop\\|dev' | xargs -n 1 git branch -d; }; f"
+    brebase = !"f() { git rebase -i `git merge-base HEAD ${1-master}`; }; f"
 [pull]
 	default = current
