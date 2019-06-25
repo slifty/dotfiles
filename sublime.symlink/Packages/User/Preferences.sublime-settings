@@ -1,10 +1,33 @@
 {
-	"binary_file_patterns": [ // Files and folders to ignore in Goto / Fuzzy Search
-		"*.dds", "*.eot", "*.gif", "*.ico", "*.jar", "*.jpeg", "*.jpg", "*.min.js", "*.min.css", "*.pdf", "*.png", "*.swf", "*.tga", "*.ttf", "*.zip",
-		"bundle.css", "bundle.js", "package-lock.json",
-		"build/", "db/", "dist/", "node_modules/", "out/", "tmp/", "vendor/",
+	"binary_file_patterns":
+	[
+		"*.dds",
+		"*.eot",
+		"*.gif",
+		"*.ico",
+		"*.jar",
+		"*.jpeg",
+		"*.jpg",
+		"*.min.js",
+		"*.min.css",
+		"*.pdf",
+		"*.png",
+		"*.swf",
+		"*.tga",
+		"*.ttf",
+		"*.zip",
+		"bundle.css",
+		"bundle.js",
+		"package-lock.json",
+		"build/",
+		"db/",
+		"dist/",
+		"node_modules/",
+		"out/",
+		"tmp/",
+		"vendor/"
 	],
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 	"draw_minimap_border": true,
 	"fade_fold_buttons": false,
 	"folder_exclude_patterns":
@@ -17,7 +40,11 @@
 		".jestcache",
 		"coverage"
 	],
-	"font_options": ["gray_antialias", "subpixel_antialias"],
+	"font_options":
+	[
+		"gray_antialias",
+		"subpixel_antialias"
+	],
 	"font_size": 14,
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
