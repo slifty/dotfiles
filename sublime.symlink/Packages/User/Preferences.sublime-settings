@@ -54,7 +54,7 @@
 	"material_theme_small_tab": true,
 	"material_theme_titlebar": true,
 	"tab_size": 2,
-	"theme": "Material-Theme-Palenight.sublime-theme",
+	"theme": "Material-Theme-Darker.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"word_wrap": "false"
 }
