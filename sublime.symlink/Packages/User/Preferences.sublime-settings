@@ -46,6 +46,10 @@
 		"subpixel_antialias"
 	],
 	"font_size": 14,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
 	"line_padding_bottom": 1,
 	"line_padding_top": 1,
 	"material_theme_compact_sidebar": true,
