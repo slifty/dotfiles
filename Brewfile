@@ -19,7 +19,7 @@ brew 'imagemagick'
 brew 'lame' # mp3 encoder, needed for audacity
 brew 'libevent'
 brew 'mas'
-brew 'node'
+brew 'nvm' # we used to install node directly, like scrubs.
 brew 'jenv'
 brew 'openssl'
 brew 'postgresql'
