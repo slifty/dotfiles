@@ -9,6 +9,7 @@ brew 'ack' # alternative to grep
 brew 'adns'
 brew 'autoconf'
 brew 'automake'
+brew 'certbot'
 brew 'git'
 brew 'gnupg'
 brew 'heroku'
