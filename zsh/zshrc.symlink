@@ -55,6 +55,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set up jenv path
+export PATH="$HOME/.jenv/bin:$PATH"
+
 # Set up various env
 eval "$(jenv init -)"
 eval "$(rbenv init -)"
