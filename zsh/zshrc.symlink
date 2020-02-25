@@ -87,3 +87,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# Set up python path
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
