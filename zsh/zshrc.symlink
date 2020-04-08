@@ -90,3 +90,4 @@ load-nvmrc
 
 # Set up python path
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
