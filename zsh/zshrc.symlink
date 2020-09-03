@@ -91,3 +91,6 @@ load-nvmrc
 # Set up python path
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+# added by travis gem
+[ ! -s /Users/slifty/.travis/travis.sh ] || source /Users/slifty/.travis/travis.sh
