@@ -30,7 +30,12 @@
 	email = slifty@gmail.com
 
 [alias]
-    cleanup = !"f() { git branch --merged ${1-master} | grep  -v '\\*\\|master\\|${1-master}$\\|develop\\|dev' | xargs -n 1 git branch -d; }; f"
-    brebase = !"f() { git rebase -i `git merge-base HEAD ${1-master}`; }; f"
+    cleanup = !"f() { git branch --merged ${1-main} | grep  -v '\\*\\|main\\|${1-main}$\\|develop\\|dev' | xargs -n 1 git branch -d; }; f"
+    cleanup-master = !"f() { git branch --merged ${1-master} | grep  -v '\\*\\|master\\|${1-master}$\\|develop\\|dev\\|main' | xargs -n 1 git branch -d; }; f"
+    brebase = !"f() { git rebase -i `git merge-base HEAD ${1-main}`; }; f"
+    brebase-master = !"f() { git rebase -i `git merge-base HEAD ${1-master}`; }; f"
+    plog = log --oneline --graph --all --decorate --pretty='format:%C(yellow)%h%C(auto)%d %Creset%s %C(cyan)[%an] %C(blue)%ar'
 [pull]
 	default = current
+[rebase]
+    autoSquash = true

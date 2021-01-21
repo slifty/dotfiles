@@ -5,6 +5,7 @@
 .sublime-project
 .java-version
 .nvmrc
+.env
 
 
 ##########################
@@ -43,4 +44,3 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
-

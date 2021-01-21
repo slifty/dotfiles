@@ -94,3 +94,5 @@ export PATH="/usr/local/sbin:$PATH"
 
 # added by travis gem
 [ ! -s /Users/slifty/.travis/travis.sh ] || source /Users/slifty/.travis/travis.sh
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
