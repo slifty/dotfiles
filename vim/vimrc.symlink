@@ -100,4 +100,7 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " colorscheme solarized
 
 " Fix the annoying visual mode on mouse select
-set mouse-=a 
+set mouse-=a
+
+" Help git commit messages spell good
+autocmd FileType gitcommit setlocal spell
