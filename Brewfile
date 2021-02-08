@@ -29,6 +29,7 @@ brew 'nvm' # we used to install node directly, like scrubs.
 brew 'jenv'
 brew 'openssl'
 brew 'packer'
+brew 'pass'
 brew 'php-version'
 brew 'postgresql'
 brew 'python'
