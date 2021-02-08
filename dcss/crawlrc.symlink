@@ -43,7 +43,7 @@
 # From there on, 'ae' will be treated as if it you typed autopickup_exceptions,
 # so you can save time typing it.
 #
-
+crawl_dir = /Users/slifty/Dropbox/Apps/dcss
 morgue_dir = /Users/slifty/Dropbox/Apps/dcss/morgue
 save_dir = /Users/slifty/Dropbox/Apps/dcss/saves
 autofight_stop = 75
