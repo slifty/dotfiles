@@ -66,8 +66,10 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
-# Load the right node at all times
+# Allow zsh hooks
 autoload -U add-zsh-hook
+
+# Load the right node at all times
 load-nvmrc() {
   local node_version="$(nvm version)"
   local nvmrc_path="$(nvm_find_nvmrc)"
@@ -88,9 +90,25 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+# Load the right python at all times
+load-python-version() {
+  local python_version="$(pyenv version-name)"
+  local python_version_path=".python-version"
+  if [ -f "$python_version_path" ]; then
+    local pyenv_target_version=$(cat "${python_version_path}")
+    local pyenv_python_version=$(pyenv version-name)
+    if [ "$pyenv_python_version" != "$pyenv_target_version" ]; then
+      echo "Installing Python $pyenv_target_version"
+      pyenv install "$pyenv_target_version"
+      pyenv local "$pyenv_target_version"
+    fi
+  fi
+}
+add-zsh-hook chpwd load-python-version
+load-python-version
+
 # Set up python path
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+eval "$(pyenv init -)"
 
 # added by travis gem
 [ ! -s /Users/slifty/.travis/travis.sh ] || source /Users/slifty/.travis/travis.sh

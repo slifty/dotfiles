@@ -1,1 +1,1 @@
-pip install pipenv
+pip install -U pipenv
