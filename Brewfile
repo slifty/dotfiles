@@ -4,6 +4,7 @@ tap 'homebrew/core'
 tap 'homebrew/cask-versions'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'heroku/brew'
 
 brew 'ack' # alternative to grep
 brew 'adns'
