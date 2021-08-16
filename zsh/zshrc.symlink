@@ -119,6 +119,9 @@ export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_EXTENSIONS_DIR=/usr/local/lib/password-store/extensions
 
+# support OTS
+export OTS_DIR=~/OTS
+
 # This should be removed soon -- related to https://github.com/Homebrew/homebrew-core/issues/52490
 # and only exists to get git svn to work
 export PERL5LIB=/usr/local/lib/perl5/site_perl/5.18.4/darwin-thread-multi-2level
