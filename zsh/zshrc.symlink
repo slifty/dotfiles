@@ -109,6 +109,7 @@ load-python-version
 
 # Set up python path
 eval "$(pyenv init -)"
+export PATH="$(pyenv root)/shims:$PATH"
 
 # added by travis gem
 [ ! -s /Users/slifty/.travis/travis.sh ] || source /Users/slifty/.travis/travis.sh
@@ -135,3 +136,9 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Apparently homebrew will auto-update all packages all the time... by DEFAULT!?!?!?
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Add MySQL
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
