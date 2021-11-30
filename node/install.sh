@@ -11,4 +11,6 @@ then
   yarn global add express-generator
   yarn global add sequelize-cli
   yarn global add app-icon
+	yarn global add @vue/cli
+	yarn global add http-server
 fi
