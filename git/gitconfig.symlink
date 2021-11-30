@@ -1,43 +1,43 @@
 # Local/private config goes in the include
 [include]
-        path = ~/.gitconfig.local
+				path = ~/.gitconfig.local
 [hub]
-        protocol = https
+				protocol = https
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
+				diff = auto
+				status = auto
+				branch = auto
+				ui = true
 [core]
-        excludesfile = ~/.gitignore
-        editor = vim
+excludesfile = ~/.gitignore
+editor = vim
 [apply]
-        whitespace = nowarn
+	whitespace = nowarn
 [mergetool]
-        keepBackup = false
+	keepBackup = false
 [difftool]
-        prompt = false
+	prompt = false
 [help]
-        autocorrect = 1
+	autocorrect = 1
 [push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-        default = current
+	# See `git help config` (search for push.default)
+	# for more information on different options of the below setting.
+	#
+	# Setting to git 2.0 default to suppress warning message
+	default = current
 [user]
-    name = Dan Schultz
-    email = slifty@gmail.com
+	name = Dan Schultz
+	email = slifty@gmail.com
 
 [alias]
-    cleanup = "!f() { declare -a BASE_BRANCH_NAMES_DESC_PRIORTY=("dev" "development" "main" "master") && for i in "${BASE_BRANCH_NAMES_DESC_PRIORTY[@]}"; do if [ -z "$BASE_BRANCH" ]; then if $(git show-ref --verify --quiet refs/heads/$i); then BASE_BRANCH="$i"; fi; fi; done; BRANCH_NAMES_STRING="${BASE_BRANCH_NAMES_DESC_PRIORTY[@]}"; GREP_PARAMS="${BRANCH_NAMES_STRING// /\\\\|}\\\\\\|\\\\*"; git branch --merged ${1-$BASE_BRANCH} | grep -v "$GREP_PARAMS" | xargs -n 1 git branch -d; }; f"
-    brebase = "!f() { declare -a BASE_BRANCH_NAMES_DESC_PRIORTY=("dev" "development" "main" "master") && for i in "${BASE_BRANCH_NAMES_DESC_PRIORTY[@]}"; do if [ -z "$BASE_BRANCH" ]; then if $(git show-ref --verify --quiet refs/heads/$i); then BASE_BRANCH="$i"; fi; fi; done; git rebase -i `git merge-base HEAD ${1-$BASE_BRANCH}`; }; f"
-    plog = log --oneline --graph --all --decorate --pretty='format:%C(yellow)%h%C(auto)%d %Creset%s %C(cyan)[%an] %C(blue)%ar'
-    edit = !"f() { EDIT_STASH=0 && GIT_SEQUENCE_EDITOR=\"sed -i '' '1s/^pick/edit/'\" git rebase -i \"$1~\" && git reset HEAD~1 && git add -AN && git add -p && git commit -e -C HEAD@{1} && if [ -z \"$(git status --porcelain)\" ]; then git rebase --continue; else git add -A && EDIT_STASH=1 && git stash -q && git rebase --continue && git stash pop -q && EDIT_STASH=0 && git reset; fi || (echo 'Aborting the edit...' && if [ \"$EDIT_STASH\" = \"1\" ]; then git stash drop -q && EDIT_STASH=0; fi && git rebase --abort && git add -A && git reset); }; f"
+	cleanup = "!f() { declare -a BASE_BRANCH_NAMES_DESC_PRIORTY=("dev" "development" "main" "master") && for i in "${BASE_BRANCH_NAMES_DESC_PRIORTY[@]}"; do if [ -z "$BASE_BRANCH" ]; then if $(git show-ref --verify --quiet refs/heads/$i); then BASE_BRANCH="$i"; fi; fi; done; BRANCH_NAMES_STRING="${BASE_BRANCH_NAMES_DESC_PRIORTY[@]}"; GREP_PARAMS="${BRANCH_NAMES_STRING// /\\\\|}\\\\\\|\\\\*"; git branch --merged ${1-$BASE_BRANCH} | grep -v "$GREP_PARAMS" | xargs -n 1 git branch -d; }; f"
+	brebase = "!f() { declare -a BASE_BRANCH_NAMES_DESC_PRIORTY=("dev" "development" "main" "master") && for i in "${BASE_BRANCH_NAMES_DESC_PRIORTY[@]}"; do if [ -z "$BASE_BRANCH" ]; then if $(git show-ref --verify --quiet refs/heads/$i); then BASE_BRANCH="$i"; fi; fi; done; git rebase -i `git merge-base HEAD ${1-$BASE_BRANCH}`; }; f"
+	plog = log --oneline --graph --all --decorate --pretty='format:%C(yellow)%h%C(auto)%d %Creset%s %C(cyan)[%an] %C(blue)%ar'
+	edit = !"f() { EDIT_STASH=0 && GIT_SEQUENCE_EDITOR=\"sed -i '' '1s/^pick/edit/'\" git rebase -i \"$1~\" && git reset HEAD~1 && git add -AN && git add -p && git commit -e -C HEAD@{1} && if [ -z \"$(git status --porcelain)\" ]; then git rebase --continue; else git add -A && EDIT_STASH=1 && git stash -q && git rebase --continue && git stash pop -q && EDIT_STASH=0 && git reset; fi || (echo 'Aborting the edit...' && if [ \"$EDIT_STASH\" = \"1\" ]; then git stash drop -q && EDIT_STASH=0; fi && git rebase --abort && git add -A && git reset); }; f"
 [pull]
-    default = current
-    rebase = true
+	default = current
+	rebase = true
 [rebase]
-    autoSquash = true
+	autoSquash = true
 [init]
-    defaultBranch = main
+	defaultBranch = main
