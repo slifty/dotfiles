@@ -142,3 +142,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Add MySQL
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# Add Google Cloud
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
