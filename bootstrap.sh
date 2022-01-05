@@ -74,9 +74,6 @@ install_dotfiles
 # Run the pre-installers
 find . -name preinstall.sh | while read installer ; do sh -c "${installer}" ; done
 
-# Set this up as a git clone (it is assumed it started as a zip file)
-setup_clone
-
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
 brew bundle

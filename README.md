@@ -1,56 +1,68 @@
-# slifty dotfiles
+# slifty's dotfiles
 
-Setting this up was a terrible yak shaving expidition, but I'm sure
-it will be worth it.
+These dotfiles contain my provisioning script for setting up fresh MacOS devices. It is a modified fork of the structured dotfiles of [Zach Holman](https://github.com/holman/dotfiles).
 
-These files are a glomming of a few different dotfile repos set up by
-others, plus some personal tweaks.  It is a modified fork of the structured
-dotfiles of [Zach Holman](https://github.com/holman/dotfiles).
+## Instructions
 
-## topical
+This repository is designed to run on a completely clean machine, though that isn't necessarily a requirement. For best results, however, you should follow these instructions immediately after logging in and before manually installing anything else (except were asked to as part of the instructions).
 
-Everything's built around topic areas. If you're adding a new area to your
-forked dotfiles — say, "Java" — you can simply add a `java` directory and put
-files in there. Anything with an extension of `.zsh` will get automatically
-included into your shell. Anything with an extension of `.symlink` will get
-symlinked without extension into `$HOME` when you run `script/bootstrap`.
+### Step 1: Preparation
 
-## components
+Before running these dotfiles you'll need to do the following:
 
-There's a few special files in the hierarchy.
+1. Install git (you can do this on a new MacOS machine by typing "git" in terminal and doing whatever Apple tells you to do)
+2. Set up your git authentication however you want (this might mean setting up ssh keys, for instance)
+2. Cloning this repository to `~/.dotfiles`
 
-- **bin/**: Anything in `bin/` will get added to your `$PATH` and be made
-  available everywhere.
-- **Brewfile**: This is a list of applications for [Homebrew Cask](https://caskroom.github.io) to install: things like Chrome and 1Password and Adium and stuff. Might want to edit this file before running any initial setup.
-- **topic/\*.zsh**: Any files ending in `.zsh` get loaded into your
-  environment.
-- **topic/path.zsh**: Any file named `path.zsh` is loaded first and is
-  expected to setup `$PATH` or similar.
-- **topic/completion.zsh**: Any file named `completion.zsh` is loaded
-  last and is expected to setup autocomplete.
-- **topic/install.sh**: Any file named `install.sh` is executed when you run `script/install`. To avoid being loaded automatically, its extension is `.sh`, not `.zsh`.
-- **topic/\*.symlink**: Any file ending in `*.symlink` gets symlinked into
-  your `$HOME`. This is so you can keep all of those versioned in your dotfiles
-  but still keep those autoloaded files in your home directory. These get
-  symlinked in when you run `script/bootstrap`.
-
-## install
-
-Run this:
-
-```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-script/bootstrap
+```
+git clone git@github.com:slifty/dotfiles.git ~/.dotfiles
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`.
+### Step 2: Review
 
-The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
-which sets up a few paths that'll be different on your particular machine.
+From here you may want to take a moment to review the dotfiles:
 
-`dot` is a simple script that installs some dependencies, sets sane macOS
-defaults, and so on. Tweak this script, and occasionally run `dot` from
-time to time to keep your environment fresh and up-to-date. You can find
-this script in `bin/`.
+* Applications in the `Brewfile` that are no longer relevant?
+* Applications in `macos/install.sh` that you don't use any more?
+* Go through the `macos/set-defaults.sh` to see if you still like all of those settings.
+
+### Step 3: Installing the dotfiles
+
+Finally you can run the bootstrap script which will install everything:
+
+```
+cd ~/.dotfiles && ./bootstrap.sh
+```
+
+You can re-run `./bootstrap.sh` whenever you feel inspired.
+
+### Step 4: Setting MacOS Defaults (Optional)
+
+I suppose every step is optional, but this one really is.  You can set up a series of MacOS defaults by running:
+
+```
+cd ~/.dotfiles/macos && ./set-defaults.sh
+```
+
+## Modifying the dotfiles
+
+### Organizaztion
+
+Each folder is intended to cover an area of functionality of your computer (as Zach Holman said: topics).  As you find new topics of functionality in your computing life you should just toss in a new root directory.
+
+### Special Topic Files
+
+There are a few special files which exist in the root directory have a few special files.
+
+- **topic/\*.zsh**: Any files ending in `.zsh` get loaded into your environment.
+- **topic/\*.symlink**: Any file ending in `*.symlink` gets symlinked into your `$HOME` (with `.symlink` removed).
+- **topic/path.zsh**: Any file named `path.zsh` is loaded first and is expected to setup `$PATH` or similar.
+- **topic/completion.zsh**: Any file named `completion.zsh` is loaded last and is expected to setup autocomplete.
+- **topic/install.sh**: Any file named `install.sh` is executed as part of `bootstrap.sh`.
+
+### Special Root Files
+
+There are also a few special files in the root directory:
+
+- **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
+- **Brewfile**: This is a list of applications for [Homebrew Cask](https://caskroom.github.io) to install.
