@@ -2,8 +2,8 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/core'
 tap 'homebrew/cask-versions'
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
 tap 'heroku/brew'
 
 brew 'ack' # alternative to grep
