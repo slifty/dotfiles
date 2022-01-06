@@ -8,7 +8,7 @@ sudo softwareupdate -i -a
 
 # To look up the install ID go to the store and "copy link"
 # and pull it from the URL
-echo "InStAlLiNg MaC aPp StOrE aPpS"
+echo "Installing App Store apps"
 mas install 1303222628 # Paprika Recipe Manager 3 (3.2.3)
 mas install 904280696 # Things3 (3.4.1)
 mas install 405399194 # Kindle (1.21.1)
@@ -19,6 +19,3 @@ mas install 506189836 # Harvest (2.1.5)
 mas install 1091189122 # Bear (1.4.3)
 mas install 409183694 # Keynote (8.1)
 mas install 497799835 # XCode (9.4.1)
-
-# echo "StArTiNg SeRvIcEs"
-# brew services start postgresql

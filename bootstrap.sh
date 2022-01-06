@@ -24,7 +24,7 @@ fail () {
 setup_gitconfig () {
   if ! [ -f git/gitconfig.local.symlink ]
   then
-    info 'setup gitconfig'
+    info 'Setup gitconfig'
 
     git_credential='cache'
     if [ "$(uname -s)" == "Darwin" ]
@@ -45,7 +45,7 @@ setup_gitconfig () {
 }
 
 install_dotfiles () {
-  info 'installing dotfiles'
+  info 'Installing dotfiles'
 
   local overwrite_all=false backup_all=false skip_all=false
 
@@ -75,13 +75,12 @@ install_dotfiles
 find . -name preinstall.sh | while read installer ; do sh -c "${installer}" ; done
 
 # Run Homebrew through the Brewfile
-echo "› brew bundle"
+info "› brew bundle"
 brew bundle
 
 # find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
 
-echo ''
-echo '  All installed!'
+success 'All installed!'
 
 

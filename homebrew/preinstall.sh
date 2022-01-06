@@ -8,7 +8,7 @@
 # Check for Homebrew
 if test ! $(which brew)
 then
-  echo "InStAlLiNg HoMeBrEw"
+  echo "Installing Homebrew"
 
   # Install the correct homebrew for each OS type
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

@@ -58,6 +58,7 @@ There are a few special files which exist in the root directory have a few speci
 - **topic/\*.symlink**: Any file ending in `*.symlink` gets symlinked into your `$HOME` (with `.symlink` removed).
 - **topic/path.zsh**: Any file named `path.zsh` is loaded first and is expected to setup `$PATH` or similar.
 - **topic/completion.zsh**: Any file named `completion.zsh` is loaded last and is expected to setup autocomplete.
+- **topic/preinstall.sh**: Any file named `preinstall.sh` is executed as part of `bootstrap.sh` but BEFORE brew is invoked.
 - **topic/install.sh**: Any file named `install.sh` is executed as part of `bootstrap.sh`.
 
 ### Special Root Files
