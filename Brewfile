@@ -22,6 +22,7 @@ brew 'htop'
 brew 'hub'
 brew 'imagemagick'
 brew 'jenv'
+brew 'kubernetes-cli'
 brew 'lame' # mp3 encoder, needed for audacity
 brew 'libevent'
 brew 'libtiff'
