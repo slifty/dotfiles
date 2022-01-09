@@ -24,8 +24,9 @@ defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
 # Don't show the welcome message
 defaults write com.knollsoft.Rectangle SUHasLaunchedBefore -bool true
 ###
-# Cycle through displays if the same command is repeated
-defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 4
+# Do nothing special if the same command is repeated
+# Other options are documented at https://github.com/rxhanson/Rectangle/blob/master/TerminalCommands.md#adjust-behavior-on-repeated-commands
+defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 2
 
 #######################
 ## Hotkeys
