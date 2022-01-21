@@ -8,6 +8,7 @@ sudo softwareupdate -i -a
 
 # To look up the install ID go to the store and "copy link"
 # and pull it from the URL
+mas install 411643860 # DaisyDisk (4.4)
 mas install 1303222628 # Paprika Recipe Manager 3 (3.2.3)
 mas install 904280696 # Things3 (3.4.1)
 mas install 405399194 # Kindle (1.21.1)
