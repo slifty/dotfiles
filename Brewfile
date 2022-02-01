@@ -14,6 +14,7 @@ brew 'automake'
 brew 'amazon-ecs-cli'
 brew 'certbot'
 brew 'cocoapods'
+brew 'fileicon' # Used to assign custom file icons to files / folders
 brew 'ghostscript'
 brew 'git'
 brew 'git-svn'

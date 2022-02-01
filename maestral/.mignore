@@ -1,1 +1,5 @@
+# Dev artifacts
 node_modules
+
+# Project artifacts
+/Code/open-tech-strategies/lever-for-change/data
