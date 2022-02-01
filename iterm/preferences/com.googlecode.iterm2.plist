@@ -5800,26 +5800,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.8132781982421875</real>
+				<real>0.20000000000000001</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.76373839378356934</real>
+				<real>0.20000000000000001</real>
 				<key>Red Component</key>
-				<real>0.73896849155426025</real>
+				<real>0.20000000000000001</real>
 			</dict>
 			<key>Selection Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.20000000298023224</real>
+				<real>0.81176470588235294</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.20000000298023224</real>
+				<real>0.76078431372549016</real>
 				<key>Red Component</key>
-				<real>0.20000000298023224</real>
+				<real>0.73725490196078436</real>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
