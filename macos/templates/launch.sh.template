@@ -1,0 +1,4 @@
+# Mount any local drives that have been configured
+if test -f "${HOME}/.dotfiles/local/autoMount.sh"; then
+	${HOME}/.dotfiles/local/autoMount.sh
+fi

@@ -1,0 +1,10 @@
+{
+  "smbNetworkMounts": [
+    {
+      "mountName": "",
+      "location": "",
+      "username": "",
+      "password": ""
+    }
+  ]
+}
