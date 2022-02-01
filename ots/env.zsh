@@ -5,7 +5,6 @@
 
 # support pass extensions
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-export PASSWORD_STORE_EXTENSIONS_DIR=/usr/local/lib/password-store/extensions
 
 # support OTS
 export OTS_DIR=~/OTS
