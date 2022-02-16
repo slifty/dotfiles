@@ -48,6 +48,15 @@ defaults write com.knollsoft.Rectangle rightHalf -dict-add keyCode -float 19 mod
 defaults write com.knollsoft.Rectangle firstTwoThirds -dict-add keyCode -float 20 modifierFlags -float 524288
 defaults write com.knollsoft.Rectangle lastTwoThirds -dict-add keyCode -float 21 modifierFlags -float 524288
 ###
+# Horizontal Thirds (opt)
+#   L R
+# T e r
+# B d f
+defaults write com.knollsoft.Rectangle topLeftThird -dict-add keyCode -float 14 modifierFlags -float 524288
+defaults write com.knollsoft.Rectangle topRightThird -dict-add keyCode -float 15 modifierFlags -float 524288
+defaults write com.knollsoft.Rectangle bottomLeftThird -dict-add keyCode -float 2 modifierFlags -float 524288
+defaults write com.knollsoft.Rectangle bottomRightThird -dict-add keyCode -float 3 modifierFlags -float 524288
+###
 # Quarters (opt)
 #   L R
 # T q w
