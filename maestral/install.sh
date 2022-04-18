@@ -1,6 +1,8 @@
+# Start Maestral
+maestral start
+
 # Set up Maestral
 mkdir ~/Maestral
-ln -s ~/.dotfiles/maestral/.mignore ~/Maestral/.mignore
 fileicon set ~/Maestral/ /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/LibraryFolderIcon.icns
 
 ## - We want to use Dropbox versions of a few key directories so they're the same across all devices
@@ -21,4 +23,5 @@ mkdir -p ~/Maestral/Code
 ln -s ~/Maestral/Code ~/Code
 fileicon set ~/Maestral/Code/ /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/DeveloperFolderIcon.icns
 
-# Check out this https://gist.github.com/korylprince/be2e09e049d2fd721ce769770d983850
+# Autostart on load
+maestral autostart -Y
