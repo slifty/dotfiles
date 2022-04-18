@@ -46,6 +46,23 @@ defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool false
 defaults write NSGlobalDomain "NSToolbarTitleViewRolloverDelay" -float 0
 # Set sidebar icon size (S: 1, M: 2, L: 3)
 defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int 1
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Set a faster key repeat rate
+defaults write NSGlobalDomain KeyRepeat 1
+# Lower the delay before key repeat starts
+defaults write NSGlobalDomain InitialKeyRepeat 12
+# Disable automatic text corrections
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+defaults write NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
+# Put displays to sleep on bottom left corner
+defaults write com.apple.dock wvous-bl-corner -int 10
+defaults write com.apple.dock wvous-bl-modifier -int 0
 
 #######################
 ## Dock Settings
@@ -57,7 +74,7 @@ defaults write com.apple.dock orientation right
 # Set the icon size of Dock items to 52 pixels
 defaults write com.apple.dock tilesize -int 52
 # Don't show recent applications in the dock
-defaults write com.apple.dock show-recents false
+defaults write com.apple.dock show-recents 0
 # Don't allow dock resize
 defaults write com.apple.Dock size-immutable -bool true
 # Show the app switcher on all displays
@@ -67,6 +84,7 @@ defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/1Password 7.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/OmniFocus.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Canary\ Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Spotify.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Firefox.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
@@ -109,6 +127,20 @@ defaults write com.apple.finder ShowPathBar true
 defaults write com.apple.finder ShowStatusBar true
 # Set the default sidebar width
 defaults write com.apple.f SidebarWidth 200
+# Show the path bar
+defaults write com.apple.finder ShowPathbar -bool true
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+# Use list view in all Finder windows by default
+# (Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`)
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# Show the ~/Library folder
+chflags nohidden ~/Library
+# Show the /Volumes folder
+sudo chflags nohidden /Volumes
+# Open new windows to home directory
+defaults write com.apple.finder NewWindowTarget "Pfhm"
+defaults write com.apple.finder NewWindowTargetPath "file://$HOME/"
 # Restart Finder
 killall Finder
 
