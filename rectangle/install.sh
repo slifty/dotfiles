@@ -27,6 +27,9 @@ defaults write com.knollsoft.Rectangle SUHasLaunchedBefore -bool true
 # Do nothing special if the same command is repeated
 # Other options are documented at https://github.com/rxhanson/Rectangle/blob/master/TerminalCommands.md#adjust-behavior-on-repeated-commands
 defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 2
+###
+# Don't snap on drag
+defaults write com.knollsoft.Rectangle windowSnapping -int 2
 
 #######################
 ## Hotkeys
@@ -34,7 +37,7 @@ defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 2
 ###
 # Maximize (opt)
 # 0
-defaults write com.knollsoft.Rectangle leftHalf -dict-add keyCode -float 29 modifierFlags -float 524288
+defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 29 modifierFlags -float 524288
 ###
 # Halves (opt)
 # L R
