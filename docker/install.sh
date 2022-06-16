@@ -5,7 +5,9 @@
 ###
 
 # Start minikube
-minikube start
+minikube start --mount --mount-string="${HOME}/Maestral/Code:/data/Code"
+# Enable ingress
+minikube addons enable ingress
 # Tell Docker CLI to talk to minikube's VM
 eval $(minikube docker-env)
 # Set up the custom host

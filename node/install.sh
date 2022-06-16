@@ -11,4 +11,5 @@ then
   yarn global add sequelize-cli
 	yarn global add @vue/cli
 	yarn global add http-server
+	yarn global add ts-node
 fi

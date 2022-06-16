@@ -1,2 +1,2 @@
 # Use minikube for docker
-eval $(minikube docker-env)
+# eval $(minikube docker-env)
