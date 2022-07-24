@@ -31,7 +31,7 @@ try {
 		} = networkMount
 
 		if (!fs.existsSync(mountPath)) {
-			fs.mkdirSync(mountPath)
+			fs.mkdirSync(mountPath, { recursive: true })
 		}
 		const mountCommand = `mount -t smbfs "//${username}:${password}@${serverPath}" ${mountPath}`
 		if(!containsLine(autoMountScriptLocation, mountCommand)) {
