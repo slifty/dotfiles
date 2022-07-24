@@ -48,9 +48,9 @@ defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int 1
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Set a faster key repeat rate
-defaults write NSGlobalDomain KeyRepeat 1
+defaults write NSGlobalDomain KeyRepeat 2
 # Lower the delay before key repeat starts
-defaults write NSGlobalDomain InitialKeyRepeat 12
+defaults write NSGlobalDomain InitialKeyRepeat 15
 # Disable automatic text corrections
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
