@@ -14,13 +14,15 @@ autoload -U add-zsh-hook
 # --- Oh My ZSH Plugins
 plugins=(
   brew
-  dotenv
   extract
   git
   gradle
   yarn
   z
 )
+
+# --- Auto load .env files
+eval "$(direnv hook zsh)"
 
 # --- Source
 source $HOME/.functions

@@ -17,6 +17,7 @@ brew 'amazon-ecs-cli'
 brew 'certbot'
 brew 'cocoapods'
 brew 'composer' # PHP dependency management
+brew 'direnv' # Used to auto-load .env files
 brew 'docker'
 brew 'docker-compose'
 brew 'fileicon' # Used to assign custom file icons to files / folders
