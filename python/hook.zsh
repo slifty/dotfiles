@@ -23,7 +23,7 @@ get_latest_available_python_version() {
 # This hook relies on the install-latest pyenv plugin:
 #
 # https://github.com/momo-lab/pyenv-install-latest
-# 
+#
 # The hook will install the .python-version if it isn't already installed.
 # If an improperly unspecific version of python is provided this will also correct
 # the .python-version file to something pyenv accepts.
@@ -41,6 +41,7 @@ autoload_python_version() {
       echo "\e[32mAutomatically installing the latest version of Python $pyenv_target_version\e[0m"
       pyenv install-latest "$pyenv_target_version"
       pyenv_installed_target_version=$(get_installed_python_version $pyenv_target_version)
+      pip install -U pipenv
     fi
     if [ -z "$pyenv_installed_target_version" ]; then
       echo "\e[91mCould not install Python $pyenv_latest_available_target_version."
