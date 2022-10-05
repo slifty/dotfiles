@@ -5360,13 +5360,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.30000001192092896</real>
+				<real>0.77403590083122253</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.30000001192092896</real>
+				<real>0.9118780016611242</real>
 				<key>Red Component</key>
-				<real>0.30000001192092896</real>
+				<real>0.95208740234375</real>
 			</dict>
 			<key>Brighten Bold Text</key>
 			<true/>
