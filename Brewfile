@@ -6,6 +6,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'heroku/brew'
 tap 'isen-ng/dotnet-sdk-versions'
+tap 'kolmafia/homebrew-kolmafia'
 
 brew 'ack' # alternative to grep
 brew 'act' # lets you test github actions locally
@@ -25,6 +26,7 @@ brew 'ghostscript'
 brew 'git'
 brew 'git-svn'
 brew 'gnupg'
+brew 'helm'
 brew 'heroku'
 brew 'htop'
 brew 'hub'
@@ -87,6 +89,7 @@ cask 'google-chrome'
 cask 'google-cloud-sdk'
 cask 'iterm2'
 cask 'temurin' # This is java (https://adoptium.net/)
+cask 'kolmafia'
 cask 'little-snitch'
 cask 'loopback'
 cask 'maestral'
