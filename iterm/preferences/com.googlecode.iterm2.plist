@@ -5296,13 +5296,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.20000000298023224</real>
+				<real>0.6640625</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.20000000298023224</real>
+				<real>0.6640625</real>
 				<key>Red Component</key>
-				<real>0.20000000298023224</real>
+				<real>0.6640625</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -5867,6 +5867,8 @@
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Use Tab Color</key>
+			<false/>
+			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
