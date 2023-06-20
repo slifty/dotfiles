@@ -6,7 +6,7 @@ echo '[ots]'$'\n''username = dan' >> ~/.subversion/servers
 mkdir ~/.password-store
 chmod go-rwx ~/.password-store
 mkdir ~/.password-store/.extensions
-curl https://raw.githubusercontent.com/OpenTechStrategies/pass-git-svn/master/git-svn.bash \
+curl https://code.librehq.com/ots/pass-git-svn/-/raw/username/git-svn.bash \
 	> ~/.password-store/.extensions/git-svn.bash
 chmod a+x ~/.password-store/.extensions/git-svn.bash
 pass git-svn clone https://svn.opentechstrategies.com/repos/ots/trunk/.password-store ~/.password-store
