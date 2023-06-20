@@ -74,6 +74,7 @@ cask 'balenaetcher'
 cask 'battle-net'
 cask 'balsamiq-wireframes'
 cask 'brave-browser'
+cask 'chromium' --no-quarantine
 cask 'clockify'
 cask 'cyberduck'
 cask 'discord'
