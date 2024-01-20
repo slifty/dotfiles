@@ -5,7 +5,7 @@
     <key>Disabled</key>
     <false/>
     <key>Label</key>
-    <string>Dotfile Launch Script</string>
+    <string>dotfiles.macos.launch</string>
     <key>ProgramArguments</key>
     <array>
         <string>${HOME}/.dotfiles/local/launch.sh</string>
