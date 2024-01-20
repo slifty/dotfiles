@@ -65,7 +65,6 @@ brew 'zsh'
 brew 'zsh-completions'
 
 # Applications
-cask '1password'
 cask 'ableton-live-suite'
 cask 'audio-hijack'
 cask 'alfred'
@@ -73,6 +72,7 @@ cask 'android-studio'
 cask 'balenaetcher'
 cask 'battle-net'
 cask 'balsamiq-wireframes'
+cask 'bitwarden'
 cask 'brave-browser'
 cask 'chromium' --no-quarantine
 cask 'clockify'
