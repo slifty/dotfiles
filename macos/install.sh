@@ -38,7 +38,7 @@ osascript -e "tell application \"System Events\" to tell every desktop to set pi
 ## "Global" Settings
 #######################
 # Make the highlight color a nice light blue
-defaults write NSGlobalDomain AppleHighlightColor -string "0.064700 0.568600 0.996500"
+defaults write NSGlobalDomain AppleHighlightColor -string "0.064700 0.568600 0.996500 Other"
 # Disable default of saving to iCloud
 defaults write NSGlobalDomain "NSDocumentSaveNewDocumentsToCloud" -bool false
 # Remove the toolbar title rollover delay
