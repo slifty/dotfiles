@@ -5,6 +5,7 @@
 .sublime-project
 .java-version
 .nvmrc
+.vscode
 
 ##########################
 ## IntelliJ
