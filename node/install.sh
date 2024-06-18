@@ -12,4 +12,5 @@ then
 	yarn global add @vue/cli
 	yarn global add http-server
 	yarn global add ts-node
+	yarn global add @mermaid-js/mermaid-cli
 fi
