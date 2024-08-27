@@ -19,7 +19,6 @@ mas install 506189836 # Harvest (2.1.5)
 mas install 1091189122 # Bear (1.4.3)
 mas install 409183694 # Keynote (8.1)
 mas install 497799835 # XCode (9.4.1)
-mas install 1236045954 # Canary Mail ()
 
 #############
 ## Set some defaults
