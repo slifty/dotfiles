@@ -42,7 +42,7 @@ From here you may want to take a moment to review the dotfiles:
 * Applications in `macos/install.sh` that you don't use any more?
 * Go through the `macos/set-defaults.sh` to see if you still like all of those settings.
 
-### Step 3: Installing the dotfiles
+### Step 3: Intall the dotfiles
 
 Finally you can run the bootstrap script which will install everything:
 
