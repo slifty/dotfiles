@@ -24,6 +24,14 @@ mas install 497799835 # XCode (9.4.1)
 #############
 
 #######################
+## Device Name
+#######################
+echo "🛠 Setting system names to '$DEVICE_NAME'..."
+sudo scutil --set ComputerName "$DEVICE_NAME"
+sudo scutil --set HostName "$DEVICE_NAME"
+sudo scutil --set LocalHostName "$DEVICE_NAME"
+
+#######################
 ## Desktop Background
 #######################
 # Add the DotfileBackgrounds directory to the preference pane because we're just that detail oriented
