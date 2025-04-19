@@ -1,9 +1,5 @@
 cask_args appdir: '/Applications'
 
-tap 'homebrew/core'
-tap 'homebrew/cask-versions'
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
 tap 'heroku/brew'
 tap 'isen-ng/dotnet-sdk-versions'
 tap 'kolmafia/homebrew-kolmafia'
