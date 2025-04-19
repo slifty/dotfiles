@@ -3,3 +3,4 @@ git/gitconfig.local.symlink
 *.local
 local/config.json
 local/automount.sh
+.env
