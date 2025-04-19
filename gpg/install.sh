@@ -1,3 +1,4 @@
 echo "setting up gpg"
-touch ~/.gnupg/gpg-agent.conf
-echo "default-cache-ttl 86400" > ~/.gnupg/gpg-agent.conf
+mkdir ~/.gnupg
+ln -s ~/.dotfiles/gpg/gpg-agent.conf ~/.gnupg/gpg-agent.conf
+gpgconf --kill gpg-agent
