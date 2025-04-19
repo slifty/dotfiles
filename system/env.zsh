@@ -1,4 +1,4 @@
-export EDITOR='code'
+export EDITOR='codium'
 
 # set LIBRARY_PATH so it includes openssl if it exists
 # (this is required by certain builds, e.g. python's psycopg2)
