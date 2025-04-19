@@ -2,3 +2,4 @@ git/gitconfig.local.symlink
 *.tmp
 *.local
 local/config.json
+local/automount.sh

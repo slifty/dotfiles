@@ -2,7 +2,7 @@
   "smbNetworkMounts": [
     {
       "mountName": "",
-      "location": "",
+      "serverPath": "",
       "username": "",
       "password": ""
     }
