@@ -11,14 +11,30 @@ This repository is designed to run on a completely clean machine, though that is
 Before running these dotfiles you'll need to do the following:
 
 1. Install git (you can do this on a new MacOS machine by typing "git" in terminal and doing whatever Apple tells you to do)
-2. Set up your git authentication however you want (this might mean setting up ssh keys, for instance)
-2. Cloning this repository to `~/.dotfiles`
+2. Clone this repository to `~/.dotfiles`
 
 ```
-git clone git@github.com:slifty/dotfiles.git ~/.dotfiles
+git clone https://github.com/slifty/dotfiles.git ~/.dotfiles
+git remote set-url origin git@github.com:slifty/dotfiles.git
 ```
 
-### Step 2: Review
+3. Define local configuration settings
+
+```
+cd ~/.dotfiles
+cp .env.template .env
+cp local/config.json.example local/config.json
+vi .env
+vi local/config.json
+```
+
+4. Source the configuration settings
+
+```
+source .env
+```
+
+### Step 2: Review everything
 
 From here you may want to take a moment to review the dotfiles:
 
@@ -26,7 +42,7 @@ From here you may want to take a moment to review the dotfiles:
 * Applications in `macos/install.sh` that you don't use any more?
 * Go through the `macos/set-defaults.sh` to see if you still like all of those settings.
 
-### Step 3: Installing the dotfiles
+### Step 3: Intall the dotfiles
 
 Finally you can run the bootstrap script which will install everything:
 
@@ -42,6 +58,28 @@ I suppose every step is optional, but this one really is.  You can set up a seri
 
 ```
 cd ~/.dotfiles/macos && ./set-defaults.sh
+```
+
+### Step 5: Manual setup
+
+1. Register the shiny new SSH key that the script generated in appropriate places
+
+ - GitHub
+ - Any necessary servers
+
+2. Install your GPG key:
+
+```
+# On the old machine...
+gpg --list-secret-keys --keyid-format LONG
+gpg --export --armor KEYID > private.key.asc
+
+# Transfer the key securely
+
+# On the new machine...
+gpg -d private.key.asc > private.key
+gpg --import private.key
+rm private.key
 ```
 
 ## Modifying the dotfiles

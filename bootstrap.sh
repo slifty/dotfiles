@@ -45,7 +45,7 @@ setup_gitconfig () {
 }
 
 install_dotfiles () {
-  info 'Installing dotfiles'
+  info 'Installing dotfiles (symlinks)'
 
   local overwrite_all=false backup_all=false skip_all=false
 

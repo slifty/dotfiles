@@ -11,11 +11,9 @@ sudo softwareupdate -i -a
 mas install 411643860 # DaisyDisk (4.4)
 mas install 1303222628 # Paprika Recipe Manager 3 (3.2.3)
 mas install 904280696 # Things3 (3.4.1)
-mas install 405399194 # Kindle (1.21.1)
 mas install 1289583905 # Pixelmator Pro
 mas install 992076693 # MindNode (2.5.7)
 mas install 880001334 # Reeder (3.1.2)
-mas install 506189836 # Harvest (2.1.5)
 mas install 1091189122 # Bear (1.4.3)
 mas install 409183694 # Keynote (8.1)
 mas install 497799835 # XCode (9.4.1)
@@ -24,6 +22,14 @@ mas install 497799835 # XCode (9.4.1)
 ## Set some defaults
 ## This is a really handy resource to see what's possible: https://macos-defaults.com
 #############
+
+#######################
+## Device Name
+#######################
+echo "🛠 Setting system names to '$DEVICE_NAME'..."
+sudo scutil --set ComputerName "$DEVICE_NAME"
+sudo scutil --set HostName "$DEVICE_NAME"
+sudo scutil --set LocalHostName "$DEVICE_NAME"
 
 #######################
 ## Desktop Background
@@ -47,9 +53,9 @@ defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int 1
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Set a faster key repeat rate
-defaults write NSGlobalDomain KeyRepeat 2
+defaults write -g KeyRepeat -int 1 # Requires a restart to work
 # Lower the delay before key repeat starts
-defaults write NSGlobalDomain InitialKeyRepeat 15
+defaults write -g InitialKeyRepeat -int 15 # Requires a restart to work
 # Disable automatic text corrections
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
@@ -72,7 +78,7 @@ defaults write com.apple.dock orientation right
 # Set the icon size of Dock items to 52 pixels
 defaults write com.apple.dock tilesize -int 52
 # Don't show recent applications in the dock
-defaults write com.apple.dock show-recents 0
+defaults write com.apple.dock show-recents -bool false
 # Don't allow dock resize
 defaults write com.apple.Dock size-immutable -bool true
 # Show the app switcher on all displays
@@ -82,7 +88,7 @@ defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Bitwarden.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/System/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/OmniFocus.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Canary\ Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Thunderbird.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Swinsian.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Spotify.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
@@ -92,20 +98,12 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Discord.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/zoom.us.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Visual Studio Code.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/VSCodium.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/iTerm.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Ableton Live 11 Suite.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/OBS.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Loopback.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Audio Hijack.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
-defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
 # Reset persistant dock folders
 defaults write com.apple.dock persistent-others -array
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///$HOME/Maestral/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>3</integer><key>displayas</key><integer>1</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
 defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///$HOME/Maestral/Documents/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>3</integer><key>displayas</key><integer>1</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
-# Restart Dock
-killall Dock
 
 #######################
 ## Finder Settings
@@ -140,8 +138,16 @@ sudo chflags nohidden /Volumes
 # Open new windows to home directory
 defaults write com.apple.finder NewWindowTarget "Pfhm"
 defaults write com.apple.finder NewWindowTargetPath "file://$HOME/"
-# Restart Finder
-killall Finder
+
+#######################
+## Disable Apple AI
+#######################
+defaults write com.apple.CloudSubscriptionFeatures.optIn 545129924 -bool false
+defaults write com.apple.CloudSubscriptionFeatures.optIn 102466495 -bool false
+defaults write com.apple.gms.availability "com.apple.gms.availability.reasons" -array 9
+defaults write com.apple.gms.availability "com.apple.gms.availability.key" -array 2
+defaults write com.apple.gms.availability "com.apple.gms.availability.gpEverInstalled" -bool false
+defaults write com.apple.gms.availability "com.apple.gms.availability.wasAvailable" -bool false
 
 #######################
 ## Set up login / launch script
@@ -171,3 +177,43 @@ sudo launchctl load ~/Library/LaunchAgents/dotfiles.macos.launch.plist
 { set +x; } 2>/dev/null
 printf "\e[32mMacOS settings updated.\e[0m\n"
 printf "\e[33m(You may need to restart for all settings to take effect)\e[0m\n"
+
+#######################
+## Set default applications for various file types
+##
+## Note to get the app ID of an application type:
+## osascript -e 'id of app "$appName"'
+#######################
+duti -s com.vscodium css all
+duti -s com.vscodium csv all
+duti -s com.vscodium env all
+duti -s com.vscodium html all
+duti -s com.vscodium js all
+duti -s com.vscodium jsx all
+duti -s com.vscodium json all
+duti -s com.vscodium md all
+duti -s com.vscodium php all
+duti -s com.vscodium sh all
+duti -s com.vscodium ts all
+duti -s com.vscodium tsx all
+duti -s com.vscodium txt all
+duti -s com.vscodium yml all
+duti -s com.vscodium yaml all
+duti -s com.vscodium xml all
+
+#######################
+## Set default browser
+#######################
+duti -s org.mozilla.firefox http
+
+#######################
+##  Disable tiling behaviors
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTilingOptionAccelerator -bool false
+defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
+
+# Restart modified services
+killall SystemUIServer
+killall Finder
+killall Dock
