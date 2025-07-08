@@ -44,3 +44,8 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
+##########################
+## Python
+##########################
+venv

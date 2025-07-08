@@ -5,12 +5,9 @@ then
   nvm alias default stable
 fi
 
-if test $(which yarn)
+if test $(which npm)
 then
-  echo "Installing global yarn packages"
-  yarn global add sequelize-cli
-	yarn global add @vue/cli
-	yarn global add http-server
-	yarn global add ts-node
-	yarn global add @mermaid-js/mermaid-cli
+  echo "Installing global npm packages"
+	npm install -g corepack
+	npm install -g http-server
 fi
