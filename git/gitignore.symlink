@@ -49,3 +49,4 @@ nb-configuration.xml
 ## Python
 ##########################
 venv
+.skip-python-autoload

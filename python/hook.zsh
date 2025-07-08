@@ -31,6 +31,12 @@ get_latest_available_python_version() {
 # will use that installed version, otherwise it will install the latest version of whatever
 # is specified in .python-version.
 autoload_python_version() {
+	# Skip autoload if .skip-python-autoload file exists
+	if [ -f ".skip-python-autoload" ]; then
+		echo "\e[32mSkipping Python autoload (.skip-python-autoload)\e[0m"
+		return
+	fi
+
   local python_version="$(pyenv version-name)"
   local python_version_path=".python-version"
   if [ -f "$python_version_path" ]; then
