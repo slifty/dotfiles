@@ -9,3 +9,6 @@ if [[ $(uname -m) == 'arm64' ]]; then
 else
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 fi
+
+# Configure corepack
+export COREPACK_ENABLE_AUTO_PIN=0
