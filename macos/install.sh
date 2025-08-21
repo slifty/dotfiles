@@ -156,7 +156,7 @@ defaults write com.apple.gms.availability "com.apple.gms.availability.wasAvailab
 envsubst < ~/.dotfiles/macos/templates/launch.sh.template > ~/.dotfiles/local/launch.sh
 chmod 755 ~/.dotfiles/local/launch.sh
 # Generate the autoMount script
-node scripts/generateAutoMountScript.js
+node ~/.dotfiles/macos/scripts/generateAutoMountScript.js
 # Generate the launch agent
 envsubst < ~/.dotfiles/macos/templates/dotfiles.macos.launch.plist.template > ~/Library/LaunchAgents/dotfiles.macos.launch.plist
 # Install the launch agent
