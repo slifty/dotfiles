@@ -50,3 +50,8 @@ nb-configuration.xml
 ##########################
 venv
 .skip-python-autoload
+
+##########################
+## Dystopian Future
+##########################
+.claude
