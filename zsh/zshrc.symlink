@@ -34,3 +34,10 @@ source $ZSH/oh-my-zsh.sh
 for file in ~/.dotfiles/**/*.zsh; do
   source "$file"
 done
+
+# bun completions
+[ -s "/Users/slifty/.bun/_bun" ] && source "/Users/slifty/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
