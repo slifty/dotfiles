@@ -40,10 +40,15 @@ mas install 497799835  # XCode (9.4.1)
 #######################
 ## Device Name
 #######################
-echo "🛠 Setting system names to '$DEVICE_NAME'..."
-sudo scutil --set ComputerName "$DEVICE_NAME"
-sudo scutil --set HostName "$DEVICE_NAME"
-sudo scutil --set LocalHostName "$DEVICE_NAME"
+CURRENT_COMPUTER_NAME=$(sudo scutil --get ComputerName 2> /dev/null || echo "")
+if [ "$CURRENT_COMPUTER_NAME" != "$DEVICE_NAME" ]; then
+	echo "🛠 Setting system names to '$DEVICE_NAME'..."
+	sudo scutil --set ComputerName "$DEVICE_NAME"
+	sudo scutil --set HostName "$DEVICE_NAME"
+	sudo scutil --set LocalHostName "$DEVICE_NAME"
+else
+	echo "✓ Device name already set to '$DEVICE_NAME'"
+fi
 
 #######################
 ## Desktop Background
@@ -173,8 +178,10 @@ chmod 755 ~/.dotfiles/local/launch.sh
 node ~/.dotfiles/macos/scripts/generateAutoMountScript.js
 # Generate the launch agent
 envsubst < ~/.dotfiles/macos/templates/dotfiles.macos.launch.plist.template > ~/Library/LaunchAgents/dotfiles.macos.launch.plist
-# Install the launch agent
-sudo launchctl load ~/Library/LaunchAgents/dotfiles.macos.launch.plist
+# Install the launch agent if not already loaded
+if ! launchctl list | grep -q "dotfiles.macos.launch"; then
+	sudo launchctl load ~/Library/LaunchAgents/dotfiles.macos.launch.plist
+fi
 # Run the launch script once
 ~/.dotfiles/local/launch.sh
 

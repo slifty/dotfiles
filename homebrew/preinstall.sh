@@ -11,8 +11,13 @@ if test ! $(which brew); then
 
 	# Install the correct homebrew for each OS type
 	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	echo >> $HOME/.zprofile
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+
+	# Add brew shellenv to .zprofile if not already present
+	if ! grep -q "brew shellenv" "$HOME/.zprofile" 2> /dev/null; then
+		echo >> $HOME/.zprofile
+		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+	fi
+
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 

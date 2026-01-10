@@ -12,14 +12,19 @@ else
 fi
 
 # Install Powerline Fonts
-info "Installing Powerline Fonts"
-TEMP_FONTS_DIR=$(mktemp -d)
-git clone https://github.com/powerline/fonts.git --depth=1 "$TEMP_FONTS_DIR"
-cd "$TEMP_FONTS_DIR"
-./install.sh
-cd -
-rm -rf "$TEMP_FONTS_DIR"
-success "Powerline Fonts installed"
+# Check if fonts are already installed by looking for a marker font
+if [ ! -f "$HOME/Library/Fonts/Meslo LG S for Powerline.ttf" ]; then
+	info "Installing Powerline Fonts"
+	TEMP_FONTS_DIR=$(mktemp -d)
+	git clone https://github.com/powerline/fonts.git --depth=1 "$TEMP_FONTS_DIR"
+	cd "$TEMP_FONTS_DIR"
+	./install.sh
+	cd -
+	rm -rf "$TEMP_FONTS_DIR"
+	success "Powerline Fonts installed"
+else
+	info "Powerline Fonts already installed"
+fi
 
 # Set zsh as default shell if it isn't already
 CURRENT_SHELL=$(dscl . -read ~/ UserShell | sed 's/UserShell: //')
