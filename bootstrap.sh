@@ -1,24 +1,40 @@
 #!/usr/bin/env bash
 #
 # bootstrap installs things.
-set +e
+set +e # Keep +e so one script failure doesn't stop others
 
-info() {
-	printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
+# Source shared functions
+source "$(dirname "$0")/lib/functions.sh"
 
-user() {
-	printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
+# Validate environment before proceeding
+validate_environment() {
+	info "Validating environment"
 
-success() {
-	printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
+	# Check if .env file exists
+	if [ ! -f ~/.dotfiles/.env ]; then
+		fail ".env file not found. Copy .env.template and configure it."
+	fi
 
-fail() {
-	printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-	echo ''
-	exit
+	# Source .env if not already sourced
+	if [ -z "$DEVICE_NAME" ] || [ -z "$USER_EMAIL" ]; then
+		source ~/.dotfiles/.env
+	fi
+
+	# Validate required environment variables
+	if [ -z "$USER_EMAIL" ]; then
+		fail "USER_EMAIL not set in .env"
+	fi
+
+	if [ -z "$DEVICE_NAME" ]; then
+		fail "DEVICE_NAME not set in .env"
+	fi
+
+	# Check if local/config.json exists
+	if [ ! -f ~/.dotfiles/local/config.json ]; then
+		fail "local/config.json not found. Copy local/config.json.example and configure it."
+	fi
+
+	success "Environment validated"
 }
 
 setup_gitconfig() {
@@ -68,17 +84,63 @@ setup_clone() {
 	cd .dotfiles
 }
 
+# Track installation results
+declare -a failed_scripts=()
+declare -a successful_scripts=()
+
+# Validate environment first
+validate_environment
+
 setup_gitconfig
 install_dotfiles
 
 # Run the pre-installers
-find . -name preinstall.sh | while read installer; do sh -c "${installer}"; done
+info "Running pre-install scripts"
+find . -name preinstall.sh | while read installer; do
+	info "Running ${installer}"
+	if sh -c "${installer}"; then
+		success "Completed ${installer}"
+	else
+		warn "Failed ${installer}"
+	fi
+done
 
 # Run Homebrew through the Brewfile
 info "› brew bundle"
-brew bundle
+if brew bundle; then
+	success "Homebrew packages installed"
+else
+	warn "brew bundle had errors"
+fi
 
-# find the installers and run them iteratively
-find . -name install.sh | while read installer; do sh -c "${installer}"; done
+# Find and run the installers iteratively
+info "Running install scripts"
+while IFS= read -r installer; do
+	info "Running ${installer}"
+	if sh -c "${installer}"; then
+		successful_scripts+=("$installer")
+		success "Completed ${installer}"
+	else
+		failed_scripts+=("$installer")
+		warn "Failed ${installer}"
+	fi
+done < <(find . -name install.sh)
 
-success 'All installed!'
+# Final report
+echo ""
+info "Installation Summary"
+echo "  Successful: ${#successful_scripts[@]}"
+echo "  Failed: ${#failed_scripts[@]}"
+
+if [ ${#failed_scripts[@]} -gt 0 ]; then
+	echo ""
+	warn "The following scripts failed:"
+	for script in "${failed_scripts[@]}"; do
+		echo "    - $script"
+	done
+	echo ""
+	warn "Bootstrap completed with errors"
+else
+	echo ""
+	success "All installed successfully!"
+fi

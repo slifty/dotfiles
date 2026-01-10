@@ -1,9 +1,23 @@
+#!/usr/bin/env bash
+set -e
+source ~/.dotfiles/lib/functions.sh
+
+# Validate required environment variables
+require_env DEVICE_NAME
+
+# Validate required commands are available
+check_command mas
+check_command duti
+check_command envsubst
+check_command node
+
 # The Brewfile handles Homebrew-based app and library installs, but there may
 # still be updates and installables in the Mac App Store. There's a nifty
 # command line interface to it that we can use to just install everything, so
 # yeah, let's do that.
-printf "\e[32mRunning MacOS setup\e[0m\n"
-set -x
+info "Running MacOS setup"
+
+info "Installing system updates"
 sudo softwareupdate -i -a
 
 # To look up the install ID go to the store and "copy link"
@@ -174,9 +188,7 @@ sudo launchctl load ~/Library/LaunchAgents/dotfiles.macos.launch.plist
 # sudo chmod 644 /etc/auto_master
 # sudo chmod 644 /etc/auto_smb
 
-{ set +x; } 2> /dev/null
-printf "\e[32mMacOS settings updated.\e[0m\n"
-printf "\e[33m(You may need to restart for all settings to take effect)\e[0m\n"
+info "Setting default applications"
 
 #######################
 ## Set default applications for various file types
@@ -214,6 +226,10 @@ defaults write com.apple.WindowManager EnableTilingOptionAccelerator -bool false
 defaults write com.apple.WindowManager EnableTiledWindowMargins -bool false
 
 # Restart modified services
-killall SystemUIServer
-killall Finder
-killall Dock
+info "Restarting system services"
+killall SystemUIServer 2> /dev/null || true
+killall Finder 2> /dev/null || true
+killall Dock 2> /dev/null || true
+
+success "MacOS settings updated"
+warn "You may need to restart for all settings to take effect"
