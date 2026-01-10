@@ -36,7 +36,7 @@ for file in ~/.dotfiles/**/*.zsh; do
 done
 
 # bun completions
-[ -s "/Users/slifty/.bun/_bun" ] && source "/Users/slifty/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
