@@ -1,6 +1,6 @@
-# slifty's dotfiles
+# Dotfiles
 
-These dotfiles contain my provisioning script for setting up fresh MacOS devices. It is a modified fork of the structured dotfiles of [Zach Holman](https://github.com/holman/dotfiles).
+These dotfiles contain provisioning scripts for setting up fresh MacOS devices. It is a modified fork of the structured dotfiles of [Zach Holman](https://github.com/holman/dotfiles).
 
 ## Instructions
 
@@ -11,11 +11,16 @@ This repository is designed to run on a completely clean machine, though that is
 Before running these dotfiles you'll need to do the following:
 
 1. Install git (you can do this on a new MacOS machine by typing "git" in terminal and doing whatever Apple tells you to do)
-2. Clone this repository to `~/.dotfiles`
+2. Fork this repository (if you want your own copy) or clone it directly
+3. Clone the repository to `~/.dotfiles`
 
 ```
-git clone https://github.com/slifty/dotfiles.git ~/.dotfiles
-git remote set-url origin git@github.com:slifty/dotfiles.git
+# If you forked the repo, replace YOUR_USERNAME with your GitHub username
+git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/.dotfiles
+
+# Set up SSH remote (optional but recommended)
+cd ~/.dotfiles
+git remote set-url origin git@github.com:YOUR_USERNAME/dotfiles.git
 ```
 
 3. Define local configuration settings

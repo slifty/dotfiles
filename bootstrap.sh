@@ -36,9 +36,11 @@ setup_gitconfig () {
     read -e git_authorname
     user ' - What is your github author email?'
     read -e git_authoremail
+    user ' - What is your GPG signing key ID? (Find with: gpg --list-secret-keys --keyid-format LONG)'
+    read -e git_signingkey
 
     touch git/gitconfig.local.symlink
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" -e "s/GPGSIGNINGKEY/$git_signingkey/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
     success 'gitconfig'
   fi
@@ -63,8 +65,10 @@ install_dotfiles () {
 }
 
 setup_clone () {
+  # Note: This function is not currently called by bootstrap
+  # Users should manually clone the repo first following the README instructions
   cd ~/
-  git clone https://github.com/slifty/dotfiles.git .dotfiles
+  git clone $DOTFILES_REPO_URL .dotfiles
   cd .dotfiles
 }
 
