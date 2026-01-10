@@ -1,18 +1,59 @@
-#######################
-# iTerm is a terminal application
+#!/usr/bin/env bash
 #
-# It has a few ways to specify preferences, but the way I've landed on is the use
-# of a preference sync folder that points to our dotfiles.
+# iTerm2 Configuration
 #
-# This may end up being noisy, as preferences seem to be written simply from interacting with the iTerm UI
-# but it does, at least, appear to work.
-printf "\e[32mUpdating iTerm to sync preferences with dotfiles\e[0m\n"
-set -x
+# This script configures iTerm2 using:
+# 1. Dynamic Profiles (for profile-specific settings like colors, fonts)
+# 2. defaults write commands (for global behavior settings)
+#
+# This approach avoids tracking the entire plist file, which contains
+# ephemeral state (window positions, sizes, etc.) that creates git noise.
 
-defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string ~/.dotfiles/iterm/preferences
-defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+set -e
 
-{ set +x; } 2>/dev/null
-printf "\e[32miTerm preference sync configured.\e[0m\n"
-printf "\e[33m(You may need to restart iTerm for all settings to take effect)\e[0m\n"
+info() {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+success() {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+printf "\e[32mConfiguring iTerm2\e[0m\n"
+
+# ==============================================================================
+# 1. Disable preference sync folder (if previously enabled)
+# ==============================================================================
+info "Disabling plist sync folder..."
+defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool false
+
+# ==============================================================================
+# 2. Set up Dynamic Profiles
+# ==============================================================================
+info "Setting up Dynamic Profiles..."
+
+# Create DynamicProfiles directory if it doesn't exist
+mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles/
+
+# Symlink our dotfiles profiles
+if [ -L ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json ]; then
+  rm ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json
+fi
+
+ln -s ~/.dotfiles/iterm/profiles/Default.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json
+success "Dynamic Profiles configured"
+
+# ==============================================================================
+# 3. Apply global settings
+# ==============================================================================
+info "Applying global settings..."
+chmod +x ~/.dotfiles/iterm/settings.sh
+~/.dotfiles/iterm/settings.sh
+
+# ==============================================================================
+# Done
+# ==============================================================================
+printf "\e[32miTerm2 configuration complete!\e[0m\n"
+printf "\e[33m⚠️  You MUST restart iTerm2 for changes to take effect\e[0m\n"
+printf "\e[33m⚠️  After restarting, you may need to select the 'Default' profile in Preferences > Profiles\e[0m\n"
 
