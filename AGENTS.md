@@ -108,6 +108,135 @@ Edit `Brewfile` in the root directory. Use these formats:
 - Used for: Structured configuration data like SMB mounts
 - Parse this file in scripts when you need user-specific structured data
 
+## Error Handling and Script Patterns
+
+This project follows specific patterns for error handling to ensure reliable installations while maintaining flexibility.
+
+### Philosophy
+
+- **Individual scripts fail fast**: Each `install.sh` should exit on error within its own scope (`set -e`)
+- **Bootstrap continues on failure**: The main `bootstrap.sh` tracks failures but continues with other scripts
+- **Logical isolation**: Each install script is treated as an independent task that won't break others
+
+### Shared Utility Functions
+
+All scripts should source the shared functions library:
+
+```bash
+#!/usr/bin/env bash
+set -e
+source ~/.dotfiles/lib/functions.sh
+```
+
+Available functions from `lib/functions.sh`:
+
+- **`info "message"`** - Display informational message with blue indicator
+- **`success "message"`** - Display success message with green indicator
+- **`fail "message"`** - Display error message with red indicator and exit
+- **`warn "message"`** - Display warning message with yellow indicator
+- **`user "message"`** - Display user prompt message
+- **`check_command tool_name`** - Verify a command exists, fail if not
+- **`require_env VAR_NAME`** - Verify an environment variable is set, fail if not
+- **`check_exists /path/to/file`** - Verify a file/directory exists, fail if not
+
+### Standard install.sh Pattern
+
+Every `install.sh` script should follow this pattern:
+
+```bash
+#!/usr/bin/env bash
+set -e # Exit on error within this script
+source ~/.dotfiles/lib/functions.sh
+
+# 1. Validate prerequisites
+check_command required_tool
+require_env REQUIRED_VAR # If script needs environment variables
+
+# 2. Inform user what's happening
+info "Installing something"
+
+# 3. Check if already installed/configured (idempotency)
+if [ -f ~/.config/something ]; then
+	info "Already configured"
+	exit 0
+fi
+
+# 4. Perform operations
+some_command
+mkdir -p ~/.config
+ln -s ~/.dotfiles/topic/config ~/.config/something
+
+# 5. Report success
+success "Installation complete"
+```
+
+### Environment Variable Validation
+
+Scripts that require environment variables should validate them:
+
+- **In bootstrap.sh**: `validate_environment()` checks `USER_EMAIL` and `DEVICE_NAME`
+- **In install scripts**: Use `require_env VAR_NAME` for script-specific requirements
+
+### Idempotency Guidelines
+
+Scripts should be safely re-runnable:
+
+```bash
+# Check before creating
+if [ ! -d "$DIR" ]; then
+	mkdir -p "$DIR"
+fi
+
+# Check before symlinking
+if [ ! -L "$LINK" ]; then
+	ln -s "$TARGET" "$LINK"
+fi
+
+# Check if already installed
+if command_output | grep -q "already installed"; then
+	info "Already installed"
+else
+	install_command
+fi
+```
+
+### Destructive Operations
+
+For potentially destructive operations (like replacing directories):
+
+1. **Check if target exists**
+2. **Warn user** about what will happen
+3. **Create backups** before removing
+4. **Provide recovery information**
+
+Example from `maestral/install.sh`:
+
+```bash
+if [ -e "$local_dir" ] && [ ! -L "$local_dir" ]; then
+	warn "$dir_name exists and will be replaced with a symlink"
+	info "Backing up existing $dir_name to ${dir_name}.backup"
+	mv "$local_dir" "${local_dir}.backup"
+fi
+```
+
+### Bootstrap Error Tracking
+
+The `bootstrap.sh` script:
+
+- Uses `set +e` to continue on errors
+- Tracks which scripts succeed and fail
+- Reports a summary at the end
+- Shows clear indication of what needs attention
+
+### When Writing New Scripts
+
+1. Always start with the standard pattern (shebang, set -e, source functions)
+2. Validate prerequisites before making changes
+3. Make operations idempotent
+4. Use informative logging (info/success/warn)
+5. Handle errors gracefully within the script's scope
+6. Test that the script can be run multiple times safely
+
 ## Best Practices for Agents
 
 ### When Modifying Files
@@ -146,6 +275,51 @@ When making changes, always update documentation:
 - Add comments for complex logic
 - Keep scripts modular and focused on single responsibilities
 - Avoid hardcoding user-specific values (use `.env` or `local/config.json` instead)
+
+## Code Formatting and Linting
+
+This project uses [Prettier](https://prettier.io/) with [prettier-plugin-sh](https://github.com/un-ts/prettier/tree/master/packages/sh) to maintain consistent code formatting across all files, including shell scripts.
+
+### Running Formatting and Linting
+
+- **Format all files**: `npm run format`
+- **Check formatting**: `npm run lint`
+
+### When to Run Formatting
+
+**Always run the formatter before committing code.** This is a required expectation for all changes to the repository.
+
+1. **Before commits**: Run `npm run format` to automatically fix formatting issues
+2. **During development**: Run `npm run lint` to check if your changes meet formatting standards
+3. **After making changes**: Verify all files pass linting with `npm run lint`
+
+### What Gets Formatted
+
+Prettier with the shell plugin handles formatting for:
+
+- Shell scripts (`.sh`, `.bash`, `.zsh` files)
+- JavaScript and JSON files (`package.json`, configuration files)
+- Markdown files (`.md`)
+- YAML files (`.yml`, `.yaml`)
+- And other common file types
+
+### Configuration
+
+- **`.prettierrc`**: Project formatting rules (uses tabs, includes shell plugin)
+- **`.editorconfig`**: Editor-level formatting hints (tabs for most files, spaces for YAML)
+- **`.node-version`**: Specifies Node.js version (24) for consistent tooling
+
+### CI Integration
+
+The CI pipeline runs `npm run lint` on all pull requests and pushes to the main branch. Code that doesn't pass Prettier checks will fail CI and must be fixed before merging.
+
+### Best Practices
+
+1. **Install Node.js**: Ensure you have Node.js installed (version 24 or compatible)
+2. **Install dependencies**: Run `npm install` in the repository root
+3. **Format early and often**: Don't wait until the end to format your changes
+4. **Trust the formatter**: Prettier is opinionated by design; let it handle formatting decisions
+5. **Check before pushing**: Always run `npm run lint` before pushing commits
 
 ## Privacy and Security
 
