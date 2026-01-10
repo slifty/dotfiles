@@ -9,7 +9,7 @@
 	},
 	"devDependencies": {
 		"prettier": "^3.4.2",
-		"prettier-plugin-sh": "^0.14.0"
+		"prettier-plugin-sh": "^0.18.0"
 	},
 	"keywords": [
 		"dotfiles",
