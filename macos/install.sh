@@ -8,15 +8,15 @@ sudo softwareupdate -i -a
 
 # To look up the install ID go to the store and "copy link"
 # and pull it from the URL
-mas install 411643860 # DaisyDisk (4.4)
+mas install 411643860  # DaisyDisk (4.4)
 mas install 1303222628 # Paprika Recipe Manager 3 (3.2.3)
-mas install 904280696 # Things3 (3.4.1)
+mas install 904280696  # Things3 (3.4.1)
 mas install 1289583905 # Pixelmator Pro
-mas install 992076693 # MindNode (2.5.7)
-mas install 880001334 # Reeder (3.1.2)
+mas install 992076693  # MindNode (2.5.7)
+mas install 880001334  # Reeder (3.1.2)
 mas install 1091189122 # Bear (1.4.3)
-mas install 409183694 # Keynote (8.1)
-mas install 497799835 # XCode (9.4.1)
+mas install 409183694  # Keynote (8.1)
+mas install 497799835  # XCode (9.4.1)
 
 #############
 ## Set some defaults
@@ -174,7 +174,7 @@ sudo launchctl load ~/Library/LaunchAgents/dotfiles.macos.launch.plist
 # sudo chmod 644 /etc/auto_master
 # sudo chmod 644 /etc/auto_smb
 
-{ set +x; } 2>/dev/null
+{ set +x; } 2> /dev/null
 printf "\e[32mMacOS settings updated.\e[0m\n"
 printf "\e[33m(You may need to restart for all settings to take effect)\e[0m\n"
 

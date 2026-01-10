@@ -91,5 +91,5 @@ defaults write com.knollsoft.Rectangle bottomLeftNinth -dict-add keyCode -float 
 defaults write com.knollsoft.Rectangle bottomCenterNinth -dict-add keyCode -float 1 modifierFlags -float 655360
 defaults write com.knollsoft.Rectangle bottomRightNinth -dict-add keyCode -float 2 modifierFlags -float 655360
 
-{ set +x; } 2>/dev/null
+{ set +x; } 2> /dev/null
 printf "\e[32mRectangle settings updated.\e[0m\n"

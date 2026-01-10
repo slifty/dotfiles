@@ -11,4 +11,4 @@ minikube addons enable ingress
 # Tell Docker CLI to talk to minikube's VM
 eval $(minikube docker-env)
 # Set up the custom host
-echo "`minikube ip` docker.local" | sudo tee -a /etc/hosts > /dev/null
+echo "$(minikube ip) docker.local" | sudo tee -a /etc/hosts > /dev/null

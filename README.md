@@ -43,9 +43,9 @@ source .env
 
 From here you may want to take a moment to review the dotfiles:
 
-* Applications in the `Brewfile` that are no longer relevant?
-* Applications in `macos/install.sh` that you don't use any more?
-* Go through the `macos/set-defaults.sh` to see if you still like all of those settings.
+- Applications in the `Brewfile` that are no longer relevant?
+- Applications in `macos/install.sh` that you don't use any more?
+- Go through the `macos/set-defaults.sh` to see if you still like all of those settings.
 
 ### Step 3: Intall the dotfiles
 
@@ -59,7 +59,7 @@ You can re-run `./bootstrap.sh` whenever you feel inspired.
 
 ### Step 4: Setting MacOS Defaults (Optional)
 
-I suppose every step is optional, but this one really is.  You can set up a series of MacOS defaults by running:
+I suppose every step is optional, but this one really is. You can set up a series of MacOS defaults by running:
 
 ```
 cd ~/.dotfiles/macos && ./set-defaults.sh
@@ -69,8 +69,8 @@ cd ~/.dotfiles/macos && ./set-defaults.sh
 
 1. Register the shiny new SSH key that the script generated in appropriate places
 
- - GitHub
- - Any necessary servers
+- GitHub
+- Any necessary servers
 
 2. Install your GPG key:
 
@@ -91,13 +91,13 @@ rm private.key
 
 ### Organizaztion
 
-Each folder is intended to cover an area of functionality of your computer (as Zach Holman said: topics).  As you find new topics of functionality in your computing life you should just toss in a new root directory.
+Each folder is intended to cover an area of functionality of your computer (as Zach Holman said: topics). As you find new topics of functionality in your computing life you should just toss in a new root directory.
 
 ### Special Topic Files
 
 There are a few special files which exist in the root directory have a few special files.
 
-- **topic/\*.zsh**: Any files ending in `.zsh` get sourced into your environment.  (Recommended prefixes: env, path, alias, hook)
+- **topic/\*.zsh**: Any files ending in `.zsh` get sourced into your environment. (Recommended prefixes: env, path, alias, hook)
 - **topic/\*.symlink**: Any file ending in `*.symlink` gets symlinked into your `$HOME` (with `.symlink` removed).
 - **topic/preinstall.sh**: Any file named `preinstall.sh` is executed as part of `bootstrap.sh` but BEFORE brew is invoked.
 - **topic/install.sh**: Any file named `install.sh` is executed as part of `bootstrap.sh`.

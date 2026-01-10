@@ -12,11 +12,11 @@
 set -e
 
 info() {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+	printf "\r  [ \033[00;34m..\033[0m ] $1\n"
 }
 
 success() {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+	printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
 printf "\e[32mConfiguring iTerm2\e[0m\n"
@@ -37,7 +37,7 @@ mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles/
 
 # Symlink our dotfiles profiles
 if [ -L ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json ]; then
-  rm ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json
+	rm ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json
 fi
 
 ln -s ~/.dotfiles/iterm/profiles/Default.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/dotfiles-profiles.json
@@ -56,4 +56,3 @@ chmod +x ~/.dotfiles/iterm/settings.sh
 printf "\e[32miTerm2 configuration complete!\e[0m\n"
 printf "\e[33m⚠️  You MUST restart iTerm2 for changes to take effect\e[0m\n"
 printf "\e[33m⚠️  After restarting, you may need to select the 'Default' profile in Preferences > Profiles\e[0m\n"
-
