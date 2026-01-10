@@ -4,3 +4,6 @@ git/gitconfig.local.symlink
 local/config.json
 local/automount.sh
 .env
+
+# Node.js
+node_modules/
