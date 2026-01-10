@@ -1,57 +1,57 @@
 {
-  "Profiles": [
-    {
-      "Name": "Default",
-      "Guid": "dotfiles-default-profile",
-      "Dynamic Profile Parent Name": "Default",
+	"Profiles": [
+		{
+			"Name": "Default",
+			"Guid": "dotfiles-default-profile",
+			"Dynamic Profile Parent Name": "Default",
 
-      "Working Directory": "~",
-      "Custom Directory": "Recycle",
+			"Working Directory": "~",
+			"Custom Directory": "Recycle",
 
-      "Terminal Type": "xterm-256color",
+			"Terminal Type": "xterm-256color",
 
-      "Use Bold Font": true,
-      "Use Bright Bold": true,
-      "Use Italic Font": true,
+			"Use Bold Font": true,
+			"Use Bright Bold": true,
+			"Use Italic Font": true,
 
-      "ASCII Anti Aliased": true,
-      "ASCII Ligatures": false,
+			"ASCII Anti Aliased": true,
+			"ASCII Ligatures": false,
 
-      "Scrollback Lines": 10000,
-      "Unlimited Scrollback": false,
+			"Scrollback Lines": 10000,
+			"Unlimited Scrollback": false,
 
-      "Silence Bell": false,
-      "Visual Bell": true,
+			"Silence Bell": false,
+			"Visual Bell": true,
 
-      "Close Sessions On End": true,
+			"Close Sessions On End": true,
 
-      "Sync Title": false,
-      "Badge Text": "",
+			"Sync Title": false,
+			"Badge Text": "",
 
-      "Use Custom Window Title": false,
-      "Custom Window Title": "",
+			"Use Custom Window Title": false,
+			"Custom Window Title": "",
 
-      "Application Keypad Allowed": false,
-      "Place Prompt at First Column": true,
+			"Application Keypad Allowed": false,
+			"Place Prompt at First Column": true,
 
-      "Show Mark Indicators": true,
+			"Show Mark Indicators": true,
 
-      "Triggers": [],
+			"Triggers": [],
 
-      "Smart Selection Rules": [
-        {
-          "notes": "URL",
-          "precision": "very_low",
-          "regex": "https?://[a-zA-Z0-9_\\-.~:/?#\\[\\]@!$&'()*+,;=%]+",
-          "actions": [
-            {
-              "title": "Open URL",
-              "action": 1,
-              "parameter": ""
-            }
-          ]
-        }
-      ]
-    }
-  ]
+			"Smart Selection Rules": [
+				{
+					"notes": "URL",
+					"precision": "very_low",
+					"regex": "https?://[a-zA-Z0-9_\\-.~:/?#\\[\\]@!$&'()*+,;=%]+",
+					"actions": [
+						{
+							"title": "Open URL",
+							"action": 1,
+							"parameter": ""
+						}
+					]
+				}
+			]
+		}
+	]
 }

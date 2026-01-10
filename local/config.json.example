@@ -1,10 +1,10 @@
 {
-  "smbNetworkMounts": [
-    {
-      "mountName": "",
-      "serverPath": "",
-      "username": "",
-      "password": ""
-    }
-  ]
+	"smbNetworkMounts": [
+		{
+			"mountName": "",
+			"serverPath": "",
+			"username": "",
+			"password": ""
+		}
+	]
 }

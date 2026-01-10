@@ -27,20 +27,20 @@ Understanding these patterns is critical for working efficiently in this project
 #### Within Topic Directories
 
 - **`*.zsh`**: Shell scripts that get automatically sourced into the zsh environment
-  - Recommended prefixes: `env.zsh` (environment variables), `path.zsh` (PATH modifications), `alias.zsh` (command aliases), `hook.zsh` (shell hooks)
-  - Example: `git/alias.zsh`, `python/env.zsh`
+    - Recommended prefixes: `env.zsh` (environment variables), `path.zsh` (PATH modifications), `alias.zsh` (command aliases), `hook.zsh` (shell hooks)
+    - Example: `git/alias.zsh`, `python/env.zsh`
 
 - **`*.symlink`**: Files that get automatically symlinked to `$HOME` (without the `.symlink` extension)
-  - Example: `git/gitconfig.symlink` ’ `~/.gitconfig`
-  - Example: `zsh/zshrc.symlink` ’ `~/.zshrc`
+    - Example: `git/gitconfig.symlink` ï¿½ `~/.gitconfig`
+    - Example: `zsh/zshrc.symlink` ï¿½ `~/.zshrc`
 
 - **`preinstall.sh`**: Scripts executed during bootstrap BEFORE Homebrew runs
-  - Use for setup that must happen before package installation
-  - Example: `homebrew/preinstall.sh` (installs Homebrew itself)
+    - Use for setup that must happen before package installation
+    - Example: `homebrew/preinstall.sh` (installs Homebrew itself)
 
 - **`install.sh`**: Scripts executed during bootstrap AFTER Homebrew runs
-  - Use for post-installation configuration and setup
-  - Example: `macos/install.sh` (installs macOS applications)
+    - Use for post-installation configuration and setup
+    - Example: `macos/install.sh` (installs macOS applications)
 
 #### Root Directory Special Files
 
@@ -80,6 +80,7 @@ Understanding the execution order is important for making modifications:
 ### Adding Homebrew Packages
 
 Edit `Brewfile` in the root directory. Use these formats:
+
 - `brew "package-name"` for command-line tools
 - `cask "app-name"` for GUI applications
 - `mas "App Name", id: 123456` for Mac App Store applications
@@ -163,6 +164,7 @@ When making changes, always update documentation:
 ## Testing Changes
 
 To test changes without affecting the user's system:
+
 1. Review what symlinks will be created
 2. Check what Homebrew packages will be installed
 3. Consider running individual `install.sh` scripts rather than full bootstrap

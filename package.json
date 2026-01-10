@@ -1,0 +1,21 @@
+{
+	"name": "dotfiles",
+	"version": "1.0.0",
+	"description": "Dotfiles for provisioning macOS development environments",
+	"private": true,
+	"scripts": {
+		"format": "prettier --write .",
+		"lint": "prettier --check ."
+	},
+	"devDependencies": {
+		"prettier": "^3.4.2",
+		"prettier-plugin-sh": "^0.14.0"
+	},
+	"keywords": [
+		"dotfiles",
+		"macos",
+		"provisioning"
+	],
+	"author": "Daniel Schultz <slifty@users.noreply.github.com>",
+	"license": "MIT"
+}

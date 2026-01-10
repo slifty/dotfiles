@@ -15,18 +15,18 @@ I have no philosophy here yet, but would like to have one some day so I'm includ
 
 ## Archive vs Delete
 
-* **Delete** emails that will never need reference in future OR the information could be referenced elsewhere.
-* **Archive** emails that might need reference in future.
+- **Delete** emails that will never need reference in future OR the information could be referenced elsewhere.
+- **Archive** emails that might need reference in future.
 
 ### Scenarios
 
-| Scenario    | Outcome |
-| -------- | ------- |
-| Order confirmation  | ARCHIVE |
-| Shipping update | DELETE |
-| Password Reset | DELETE |
-| Email from Justin Reese | DELETE WITHOUT READING |
-| Political donation email | DELETE AND UNSUBSCRIBE |
-| Newsletter | DELETE |
-| Listserv email | DELETE IF WEB ARCHIVE EXISTS |
-| Watched codebase email | DELETE |
+| Scenario                 | Outcome                      |
+| ------------------------ | ---------------------------- |
+| Order confirmation       | ARCHIVE                      |
+| Shipping update          | DELETE                       |
+| Password Reset           | DELETE                       |
+| Email from Justin Reese  | DELETE WITHOUT READING       |
+| Political donation email | DELETE AND UNSUBSCRIBE       |
+| Newsletter               | DELETE                       |
+| Listserv email           | DELETE IF WEB ARCHIVE EXISTS |
+| Watched codebase email   | DELETE                       |
