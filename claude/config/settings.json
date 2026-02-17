@@ -1,0 +1,12 @@
+{
+	"$schema": "https://claude.ai/schemas/claude-code/settings.json",
+	"permissions": {
+		"allow": [
+			"Bash(npm run test)",
+			"Bash(npm run lint)",
+			"Bash(npm run build)",
+			"Bash(gh issue view*)"
+		],
+		"deny": ["Bash(sed *)"]
+	}
+}
