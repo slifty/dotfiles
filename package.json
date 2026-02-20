@@ -8,7 +8,7 @@
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
-		"prettier": "^3.4.2",
+		"prettier": "^3.8.1",
 		"prettier-plugin-sh": "^0.18.0"
 	},
 	"keywords": [
