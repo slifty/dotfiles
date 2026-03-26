@@ -56,6 +56,7 @@ cask 'battle-net'
 cask 'bitwarden'
 cask 'brave-browser'
 cask 'chromium', args: { "no-quarantine": true }
+cask 'claude-code'
 cask 'cyberduck'
 cask 'discord'
 cask 'dungeon-crawl-stone-soup-tiles'
