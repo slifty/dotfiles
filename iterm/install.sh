@@ -24,8 +24,20 @@ printf "\e[32mConfiguring iTerm2\e[0m\n"
 # ==============================================================================
 # 1. Disable preference sync folder (if previously enabled)
 # ==============================================================================
+# iTerm2 rewrites its preferences from in-memory state on quit, which will
+# clobber any `defaults write` we do here. If iTerm2 is running, warn the
+# user — the settings below will only stick after a clean quit and relaunch.
+if pgrep -xq iTerm2; then
+	printf "\e[33m⚠️  iTerm2 is currently running.\e[0m\n"
+	printf "\e[33m   It will overwrite these preferences on quit.\e[0m\n"
+	printf "\e[33m   Quit iTerm2 completely, then re-run this script.\e[0m\n"
+fi
+
 info "Disabling plist sync folder..."
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool false
+# Clear the stale custom folder path so iTerm2 doesn't complain about a
+# missing/malformed directory on next launch.
+defaults delete com.googlecode.iterm2 "PrefsCustomFolder" 2> /dev/null || true
 
 # ==============================================================================
 # 2. Set up Dynamic Profiles

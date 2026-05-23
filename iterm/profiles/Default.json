@@ -1,9 +1,8 @@
 {
 	"Profiles": [
 		{
-			"Name": "Default",
+			"Name": "Dotfiles Default",
 			"Guid": "dotfiles-default-profile",
-			"Dynamic Profile Parent Name": "Default",
 
 			"Working Directory": "~",
 			"Custom Directory": "Recycle",
