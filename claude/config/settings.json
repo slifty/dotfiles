@@ -1,6 +1,10 @@
 {
 	"$schema": "https://claude.ai/schemas/claude-code/settings.json",
+	"alwaysThinkingEnabled": true,
+	"effortLevel": "high",
+	"skipAutoPermissionPrompt": true,
 	"permissions": {
+		"defaultMode": "auto",
 		"allow": [
 			"Bash(npm run test)",
 			"Bash(npm run lint)",
@@ -9,5 +13,48 @@
 			"Bash(gh pr view*)"
 		],
 		"deny": ["Bash(sed *)"]
+	},
+	"attribution": {
+		"commit": ""
+	},
+	"spinnerVerbs": {
+		"mode": "replace",
+		"verbs": [
+			"Seeking the Ocarina of Time",
+			"Collecting Korok seeds",
+			"Pulling the Master Sword",
+			"Solving the Water Temple",
+			"Charging a spin attack",
+			"Cooking a dubious meal",
+			"Bombing a suspicious wall",
+			"Playing Zelda's Lullaby",
+			"Paragliding off a cliff",
+			"Shattering pots for rupees",
+			"Climbing in the rain",
+			"Taming a wild horse",
+			"Walking into Mordor",
+			"Consulting the Palantír",
+			"Lighting the beacons of Gondor",
+			"Riding to Rohan",
+			"Second breakfasting",
+			"Following Gandalf's counsel",
+			"Whispering with the Ents",
+			"Sneaking past Shelob",
+			"Sailing to the Grey Havens",
+			"Holding the bridge of Khazad-dûm",
+			"Casting the Ring into the fire",
+			"Translating the Black Speech",
+			"Calibrating the hyperdrive",
+			"Consulting the Jedi Archives",
+			"Trusting the Force",
+			"Making the Kessel Run",
+			"Bullseyeing womp rats",
+			"Igniting a lightsaber",
+			"Negotiating with Hutts",
+			"Plotting a jump to lightspeed",
+			"Decrypting the Death Star plans",
+			"Rerouting power to shields",
+			"Listening to Master Yoda"
+		]
 	}
 }
