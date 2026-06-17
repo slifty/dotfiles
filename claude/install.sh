@@ -28,16 +28,24 @@ if [ ! -d "$CLAUDE_CONFIG_DIR" ]; then
 	mkdir -p "$CLAUDE_CONFIG_DIR"
 fi
 
-# Symlink settings.json
-if [ -f "$DOTFILES_CLAUDE_CONFIG/settings.json" ]; then
-	if [ -L "$CLAUDE_CONFIG_DIR/settings.json" ]; then
-		rm "$CLAUDE_CONFIG_DIR/settings.json"
-	elif [ -f "$CLAUDE_CONFIG_DIR/settings.json" ]; then
-		warn "Existing settings.json found, backing up to settings.json.backup"
-		mv "$CLAUDE_CONFIG_DIR/settings.json" "$CLAUDE_CONFIG_DIR/settings.json.backup"
+# Symlink every file in config/ into ~/.claude/ (follows the nested-config
+# pattern used by postgresql/newsyslog: leave an existing symlink alone, back
+# up a real file before linking)
+for src in "$DOTFILES_CLAUDE_CONFIG"/*; do
+	[ -f "$src" ] || continue
+	filename="$(basename "$src")"
+	target="$CLAUDE_CONFIG_DIR/$filename"
+
+	if [ -L "$target" ]; then
+		info "${filename} already symlinked"
+	else
+		if [ -e "$target" ]; then
+			warn "${filename} exists and is not a symlink, backing up"
+			mv "$target" "${target}.backup"
+		fi
+		ln -s "$src" "$target"
+		success "Symlinked ${filename}"
 	fi
-	ln -s "$DOTFILES_CLAUDE_CONFIG/settings.json" "$CLAUDE_CONFIG_DIR/settings.json"
-	success "Symlinked settings.json"
-fi
+done
 
 success "Claude Code configuration complete"

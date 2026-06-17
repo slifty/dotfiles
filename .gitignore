@@ -5,5 +5,8 @@ local/config.json
 local/automount.sh
 .env
 
+# Track the global Claude instructions despite a global CLAUDE.md ignore
+!claude/config/CLAUDE.md
+
 # Node.js
 node_modules/
