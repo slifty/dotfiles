@@ -30,9 +30,9 @@ take precedence where they conflict.
     6. Wrap the body at 72 characters.
     7. Use the body to explain _what_ and _why_ vs. _how_.
 - Always end the commit message with a final line referencing the issue:
-  `Issue #XXX {actual issue title here}` — replace `XXX` with the issue number
+  `Issue #XXX actual issue title` — replace `XXX` with the issue number
   and put the issue's real title inside the braces (e.g.
-  `Issue #142 {Fix login redirect loop}`). Look up the actual title rather than
+  `Issue #142 Fix login redirect loop`). Look up the actual title rather than
   guessing.
 
 ## Editing
