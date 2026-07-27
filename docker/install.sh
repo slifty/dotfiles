@@ -20,6 +20,9 @@ info "Setting up docker environment"
 eval $(minikube docker-env)
 
 info "Adding docker.local to /etc/hosts"
+# docker.local points at minikube's dynamic IP, so it lives outside the hosts/
+# managed block. Remove any prior entry first so re-runs don't duplicate it.
+sudo sed -i '' '/[[:space:]]docker\.local$/d' /etc/hosts
 echo "$(minikube ip) docker.local" | sudo tee -a /etc/hosts > /dev/null
 
 success "Docker environment configured"
