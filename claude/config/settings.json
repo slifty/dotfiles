@@ -3,6 +3,7 @@
 	"alwaysThinkingEnabled": true,
 	"effortLevel": "high",
 	"skipAutoPermissionPrompt": true,
+	"skipWorkflowUsageWarning": true,
 	"permissions": {
 		"defaultMode": "auto",
 		"allow": [
@@ -12,10 +13,12 @@
 			"Bash(gh issue view*)",
 			"Bash(gh pr view*)"
 		],
-		"deny": ["Bash(sed *)"]
+		"deny": ["Bash(sed -i *)"]
 	},
 	"attribution": {
-		"commit": ""
+		"commit": "",
+		"pr": "",
+		"sessionUrl": false
 	},
 	"spinnerVerbs": {
 		"mode": "replace",

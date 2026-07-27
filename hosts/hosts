@@ -1,0 +1,27 @@
+# Shared host entries — checked into this PUBLIC repo, so keep to info you're OK
+# publishing. Don't-publish entries go in hosts.local; secrets never go in a hosts
+# file. Details: hosts/README.md. Apply with: ~/.dotfiles/hosts/install.sh
+
+# --- Loopback dev hosts (127.0.0.1) ---
+
+# Permanent (dev)
+127.0.0.1 local.permanent.org
+
+# OTS: Hypha (dev)
+127.0.0.1 hypha.test
+127.0.0.1 apply.hypha.test
+
+# OTS: PDC (dev)
+127.0.0.1 pdc-api
+127.0.0.1 pdc-auth
+127.0.0.1 pdc-databases
+127.0.0.1 pdc-s3
+
+# --- LAN convenience hosts ---
+# Uncomment and set to your devices' actual LAN IPs. (These names may also already
+# resolve via mDNS/Bonjour — see hosts/README.md — but a static entry is stable
+# across DHCP changes and works even if mDNS is flaky.)
+
+# 192.168.1.10 ha.local
+# 192.168.1.11 nas.local
+# 192.168.1.1  network.local
