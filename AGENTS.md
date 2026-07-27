@@ -323,10 +323,33 @@ The CI pipeline runs `npm run lint` on all pull requests and pushes to the main 
 
 ## Privacy and Security
 
+> **This repository is PUBLIC** (`github.com/slifty/dotfiles`). Everything committed
+> is world-readable and effectively permanent — indexed by GitHub search, copied
+> into forks, and preserved in git history even after deletion. Treat any change
+> as a publication decision.
+
 - Never commit `.env` or `local/config.json` files
-- Never commit SSH keys, GPG keys, or other secrets
-- Be cautious with API tokens and credentials
+- Never commit SSH keys, GPG keys, API tokens, passwords, or other **secrets**
 - Use templates (`.example` or `.template` files) to show structure without revealing secrets
+
+### Secrets vs. information
+
+When deciding whether something can be committed, distinguish two categories:
+
+- **Secrets (capability)** — grant access: passwords, private keys, tokens, session
+  cookies. These must **never** be committed. They belong in gitignored files
+  (`.env`, `local/config.json`) regardless of convenience.
+- **Information (disclosure)** — reveal something but grant no access: internal
+  hostnames, private LAN IPs (`192.168.x.x` / `10.x.x.x`), device naming schemes.
+  These are generally low-risk to commit — RFC1918 addresses are unroutable from
+  outside the network — and committing them buys real convenience (new devices
+  provision automatically). The cost is a small, permanent loss of privacy, so it
+  is the user's call. Default to committing only when the disclosure is clearly
+  minor; when in doubt, ask, or route it to a gitignored overlay.
+
+The `hosts/` topic is the reference example: safe-to-publish entries live in the
+committed `hosts/hosts`, while anything the user would rather not publish goes in
+the gitignored `hosts/hosts.local`. Follow that split when adding similar features.
 
 ## Git Workflow
 
