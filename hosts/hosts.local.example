@@ -1,0 +1,21 @@
+# Private host entries (gitignored — this file's real counterpart is hosts.local).
+#
+# Copy this file to hosts.local and add entries you do NOT want published to the
+# public repo. The `*.local` rule in .gitignore keeps hosts.local out of git.
+#
+#   cp hosts/hosts.local.example hosts/hosts.local
+#
+# This overlay is OPTIONAL. Most host entries are fine to publish and belong in
+# the shared hosts/hosts file instead (that's what auto-provisions new devices).
+# Reserve this file for things that reveal something you'd rather keep private:
+#   - a routable / public-facing IP
+#   - a VPN endpoint or client host
+#   - anything whose name alone leaks a relationship you don't want indexed
+#
+# Because this file is not in git, it does NOT sync across devices on its own.
+# To sync it (optional), point it at a copy in your Dropbox/Maestral folder — see
+# hosts/README.md.
+#
+# After editing, apply with: ~/.dotfiles/hosts/install.sh
+
+# 10.8.0.5 vpn-only-host.example

@@ -108,3 +108,10 @@ There are also a few special files in the root directory:
 
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
 - **Brewfile**: This is a list of applications for [Homebrew Cask](https://caskroom.github.io) to install.
+
+### Custom `/etc/hosts` entries
+
+The `hosts/` topic keeps custom `/etc/hosts` entries in version control so they
+provision automatically and stay in sync across devices. Shared, safe-to-publish
+entries live in `hosts/hosts`; entries you'd rather not publish go in a gitignored
+`hosts/hosts.local` overlay. See [`hosts/README.md`](hosts/README.md) for details.
