@@ -3,6 +3,7 @@
 	"alwaysThinkingEnabled": true,
 	"effortLevel": "high",
 	"skipAutoPermissionPrompt": true,
+	"skipWorkflowUsageWarning": true,
 	"permissions": {
 		"defaultMode": "auto",
 		"allow": [
@@ -15,7 +16,9 @@
 		"deny": ["Bash(sed *)"]
 	},
 	"attribution": {
-		"commit": ""
+		"commit": "",
+		"pr": "",
+		"sessionUrl": false
 	},
 	"spinnerVerbs": {
 		"mode": "replace",
