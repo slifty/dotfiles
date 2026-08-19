@@ -29,11 +29,43 @@ take precedence where they conflict.
     5. Use the imperative mood in the subject line ("Add x", not "Added x").
     6. Wrap the body at 72 characters.
     7. Use the body to explain _what_ and _why_ vs. _how_.
-- Always end the commit message with a final line referencing the issue:
-  `Issue #XXX {actual issue title here}` — replace `XXX` with the issue number
-  and put the issue's real title inside the braces (e.g.
-  `Issue #142 {Fix login redirect loop}`). Look up the actual title rather than
-  guessing.
+- Always end the commit message with a final line referencing the issue. The
+  form is the word `Issue`, the issue number, then the issue's real title —
+  nothing else. No braces, brackets, quotes, or other punctuation wrapping
+  either part. Look the title up rather than guessing it.
+
+        Issue #142 Fix login redirect loop
+
+    Not `Issue #142 {Fix login redirect loop}` — any placeholder markup in these
+    instructions indicates text to replace, and never appears in the output.
+
+## AI attribution
+
+This governs **prose Claude wrote for a human to read** — commit messages, PR
+titles and bodies, issue text, review comments. If a project permits that
+content to be posted, it **ALWAYS** carries Claude attribution. This is not
+optional, and not something to trade away for tidiness or brevity: a reader
+must never have to guess whether a person or a model wrote what they are
+reading.
+
+- Commit messages: end with the `Claude-Session: <session-id>` trailer. The
+  session ID is the value of `CLAUDE_CODE_SESSION_ID`; do not ask me for a URL.
+- PR and issue bodies: end with the Claude Code footer
+  (`🤖 Generated with [Claude Code](https://claude.com/claude-code)` plus the
+  session ID).
+- Comments posted on my behalf (PR review replies, issue comments): same footer.
+- Applies to any such prose Claude drafted or substantially wrote, not only to
+  content generated wholesale.
+- If a project forbids AI attribution, then it also forbids posting LLM-authored
+  prose there. Do not resolve that by posting unattributed — ask me.
+
+**Code does not carry attribution.** The diff is reviewed on its merits, and
+marking it up adds noise. So what triggers the `Claude-Session:` trailer is
+Claude writing the commit _message_ — not Claude writing the code the commit
+contains, however much of it. Amending Claude-written code into a commit whose
+message I wrote leaves that message, and its lack of a trailer, alone; don't
+ask me for a session ID in that case. If Claude later rewrites the message,
+the trailer goes on then.
 
 ## Editing
 
