@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#
+# Interactively rebase every commit this branch added on top of its base.
+#
+# Usage: git brebase [base]
+#
+# Rebasing from the merge-base means only this branch's own commits show
+# up in the todo list, however far the base has moved on since.
+#
+# The base branch defaults to the first of these that exists locally:
+# dev, development, main, master.
+
+set -e
+
+BASE_BRANCH_CANDIDATES=(dev development main master)
+
+base="$1"
+
+if [ -z "$base" ]; then
+	for candidate in "${BASE_BRANCH_CANDIDATES[@]}"; do
+		if git show-ref --verify --quiet "refs/heads/$candidate"; then
+			base="$candidate"
+			break
+		fi
+	done
+fi
+
+git rebase -i "$(git merge-base HEAD ${base:+"$base"})"

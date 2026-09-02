@@ -16,9 +16,7 @@
 		"deny": ["Bash(sed -i *)"]
 	},
 	"attribution": {
-		"commit": "",
-		"pr": "",
-		"sessionUrl": false
+		"sessionUrl": true
 	},
 	"spinnerVerbs": {
 		"mode": "replace",

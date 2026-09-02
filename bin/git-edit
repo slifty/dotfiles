@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+#
+# Amend or split a commit further back in history.
+#
+# Usage: git edit <commit>
+#
+# Rebases back to <commit> and uncommits it, then lets you pick the hunks
+# that stay in it via `git add -p`.  Anything you leave behind is carried
+# forward so it lands on the following commit instead.
+#
+# Deliberately avoids `set -e`: every step routes failure to abort(), so a
+# half-finished edit never leaves a rebase in progress.
+#
+# Caveats, per the source gist:
+#   - added files can be dropped from a commit, deleted files cannot
+#   - removing every change from a commit aborts
+#   - a conflict later in the rebase aborts
+#   - bailing out of `git add -p` needs a manual `git rebase --abort`
+#
+# Source: https://gist.github.com/slifty/68bd451896f6494b870280c00dc4fe9c
+
+edit_stash=0
+
+abort() {
+	echo 'Aborting the edit...'
+	if [ "$edit_stash" = "1" ]; then
+		git stash drop -q
+		edit_stash=0
+	fi
+	git rebase --abort
+	git add -A
+	git reset
+	exit 1
+}
+
+if [ -z "$1" ]; then
+	echo "edit: usage: git edit <commit>"
+	exit 1
+fi
+
+# Stop the rebase at the target commit by turning its "pick" into "edit".
+GIT_SEQUENCE_EDITOR="sed -i '' '1s/^pick/edit/'" git rebase -i "$1~" || abort
+
+# Uncommit it, keeping the changes in the worktree, then choose what
+# stays.  The intent-to-add pass is what makes new files visible to -p.
+git reset HEAD~1 || abort
+git add -AN || abort
+git add -p || abort
+git commit -e -C HEAD@{1} || abort
+
+if [ -z "$(git status --porcelain)" ]; then
+	git rebase --continue || abort
+else
+	# Hunks left behind ride along to the next commit.
+	git add -A || abort
+	git stash -q || abort
+	edit_stash=1
+	git rebase --continue || abort
+	git stash pop -q || abort
+	edit_stash=0
+	git reset || abort
+fi
