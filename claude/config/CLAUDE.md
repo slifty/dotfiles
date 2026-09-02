@@ -34,7 +34,9 @@ take precedence where they conflict.
   nothing else. No braces, brackets, quotes, or other punctuation wrapping
   either part. Look the title up rather than guessing it.
 
-        Issue #142 Fix login redirect loop
+    ```
+    Issue #142 Fix login redirect loop
+    ```
 
     Not `Issue #142 {Fix login redirect loop}` — any placeholder markup in these
     instructions indicates text to replace, and never appears in the output.
