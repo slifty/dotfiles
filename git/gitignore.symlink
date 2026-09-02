@@ -3,7 +3,6 @@
 *.swp
 .sublime-workspace
 .sublime-project
-.java-version
 .nvmrc
 .vscode
 .envrc
