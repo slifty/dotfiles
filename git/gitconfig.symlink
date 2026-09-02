@@ -33,7 +33,7 @@
 	plog = log --oneline --graph --all --decorate --pretty='format:%C(yellow)%h%C(auto)%d %Creset%s %C(cyan)[%an] %C(blue)%ar'
 	edit = !~/.dotfiles/bin/git-edit
 	cremit = commit --reedit-message=HEAD
-	sync = "!f() { remote=\"${GIT_UPSTREAM_NAME:-upstream}\"; branch=\"$(git rev-parse --abbrev-ref HEAD)\"; if [ \"$branch\" != \"main\" ] && [ \"$branch\" != \"master\" ]; then echo \"Error: Must be on main or master branch (currently on $branch)\"; return 1; fi; git fetch \"$remote\" --tags || return 1; if [ -n \"$1\" ]; then ref=\"$1\"; sync_branch=\"sync/${ref}\"; else git remote set-head \"$remote\" --auto 2>/dev/null; upstream_branch=\"$(git symbolic-ref \"refs/remotes/$remote/HEAD\" 2>/dev/null | sed \"s|refs/remotes/$remote/||\")\" || { echo \"Error: Could not determine default branch for $remote\"; return 1; }; ref=\"$remote/$upstream_branch\"; sync_branch=\"sync/$(date +%s)-${upstream_branch}\"; fi; git checkout -b \"$sync_branch\" && git merge \"$ref\" -m \"Merge upstream ${ref}\"; }; f"
+	sync = !~/.dotfiles/bin/git-sync
 	fpush = push --force-with-lease
 	track = !git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
 	up = !~/.dotfiles/bin/git-up

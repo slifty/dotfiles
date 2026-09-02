@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+#
+# Merge an upstream's changes into a fresh sync branch.
+#
+# Usage: git sync [ref]
+#
+# Intended for forks: run it on main/master and it branches off, merges
+# the upstream ref, and leaves you on that branch to push and PR.  With
+# no ref it uses the upstream's default branch.
+#
+# The upstream remote is $GIT_UPSTREAM_NAME, defaulting to "upstream".
+
+set -e
+
+remote="${GIT_UPSTREAM_NAME:-upstream}"
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" != "main" ] && [ "$branch" != "master" ]; then
+	echo "Error: Must be on main or master branch (currently on $branch)"
+	exit 1
+fi
+
+git fetch "$remote" --tags
+
+if [ -n "$1" ]; then
+	ref="$1"
+	sync_branch="sync/${ref}"
+else
+	git remote set-head "$remote" --auto > /dev/null 2>&1 || true
+	upstream_branch="$(git symbolic-ref "refs/remotes/$remote/HEAD" 2> /dev/null | sed "s|refs/remotes/$remote/||")"
+
+	if [ -z "$upstream_branch" ]; then
+		echo "Error: Could not determine default branch for $remote"
+		exit 1
+	fi
+
+	ref="$remote/$upstream_branch"
+	# Timestamped, since the default branch syncs repeatedly.
+	sync_branch="sync/$(date +%s)-${upstream_branch}"
+fi
+
+git checkout -b "$sync_branch"
+git merge "$ref" -m "Merge upstream ${ref}"
