@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+#
+# Bring the current branch up to date with its base branch.
+#
+# Usage: git up [base]
+#
+# The base branch is, in order of preference:
+#   1. the argument passed to this command
+#   2. `branch.<current>.base` from git config
+#   3. the remote's default branch (e.g. origin/HEAD)
+#
+# On the base branch itself this fast-forwards. On any other branch it
+# rebases onto the base, autostashing local changes.
+
+set -e
+
+branch="$(git symbolic-ref --quiet --short HEAD)" || {
+	echo "up: not on a branch"
+	exit 1
+}
+
+remote="$(git config --get "branch.$branch.remote" || echo origin)"
+
+# Determine the base branch, falling back to the remote's default branch.
+base="${1:-$(git config --get "branch.$branch.base" || true)}"
+
+if [ -z "$base" ]; then
+	git remote set-head "$remote" --auto > /dev/null 2>&1 || true
+	base="$(git symbolic-ref --quiet --short "refs/remotes/$remote/HEAD" | sed "s|^$remote/||")"
+fi
+
+if [ -z "$base" ]; then
+	echo "up: could not determine a base branch"
+	exit 1
+fi
+
+# Already on the base branch: just fast-forward it.
+if [ "$branch" = "$base" ]; then
+	git fetch "$remote" "$base"
+	git merge --ff-only "$remote/$base"
+	exit 0
+fi
+
+if git show-ref --verify --quiet "refs/heads/$base"; then
+	# Fast-forward the local base branch without checking it out. If that
+	# fails the local branch has diverged (or the remote has no such
+	# branch), so leave it alone and carry on with whatever we have.
+	if ! git fetch "$remote" "$base:$base" 2> /dev/null; then
+		if git fetch "$remote" "$base" 2> /dev/null; then
+			echo "up: local $base has diverged; leaving it alone"
+		else
+			echo "up: no $base on $remote; using local $base"
+		fi
+	fi
+else
+	git fetch "$remote" "$base"
+fi
+
+# Prefer the remote-tracking ref when one exists.
+target="$base"
+if git rev-parse --verify --quiet "refs/remotes/$remote/$base" > /dev/null; then
+	target="$remote/$base"
+fi
+
+echo "up: rebasing $branch onto $target"
+git rebase --autostash "$target"
