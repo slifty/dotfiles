@@ -15,6 +15,19 @@ load-nvmrc() {
 		elif [ "$nvmrc_node_version" != "$node_version" ]; then
 			nvm use
 		fi
+	elif [ "$(nvm version default)" = "N/A" ] && [ -n "$(nvm_alias default 2> /dev/null)" ]; then
+		[ -n "$_nvm_default_install_failed" ] && return
+		local default_alias="$(nvm_alias default)"
+		local current_node="$(nvm version node)"
+		local install_args=("$default_alias")
+		if [ "$current_node" != "N/A" ]; then
+			install_args+=(--reinstall-packages-from="$current_node")
+		fi
+		echo "nvm default ($default_alias) is not installed; installing it"
+		if ! nvm install "${install_args[@]}"; then
+			_nvm_default_install_failed=1
+			echo "Could not install nvm default ($default_alias); run 'nvm install $default_alias' to retry"
+		fi
 	elif [ "$node_version" != "$(nvm version default)" ]; then
 		echo "Reverting to nvm default version"
 		nvm use default
