@@ -11,13 +11,25 @@ take precedence where they conflict.
 - Match the conventions already present in a repo (naming, formatting, structure)
   rather than imposing new ones.
 - Ask before doing anything destructive, hard to reverse, or outward-facing
-  (deleting files, force-pushing, publishing). Approval in one context does not
-  carry to the next.
+  (deleting files, force-pushing a shared branch, publishing). Approval in one
+  context does not carry to the next.
 
 ## Git
 
 - Do not commit or push unless explicitly asked.
 - Never commit secrets or local-only config (`.env`, credentials, tokens).
+- On a working branch, fix review feedback by amending the commit that
+  introduced the problem — `git commit --amend`, or a fixup and autosquash when
+  it is not `HEAD`. Do not append a follow-up commit that undoes or patches an
+  earlier one in the same branch. The branch should read as if the feedback had
+  never been needed, because the commit that lands on the main branch is the one
+  a future reader bisects to, and "fix review comment" tells them nothing.
+  A project that forbids rewriting history on an open pull request overrides
+  this.
+- It is generally OK to use `git fpush` (an alias for
+  `git push --force-with-lease`) to force push against working branches without
+  asking first. Never force push the main branch or a branch other people push
+  to.
 - Follow the repo's own commit conventions where they exist (e.g. Conventional
   Commits, changelog tags, issue references). Repo rules win on conflict.
 - Otherwise, follow the seven rules of a great commit message
@@ -28,11 +40,14 @@ take precedence where they conflict.
     4. Do not end the subject line with a period.
     5. Use the imperative mood in the subject line ("Add x", not "Added x").
     6. Wrap the body at 72 characters.
-    7. Use the body to explain _what_ and _why_ vs. _how_.
-- Always end the commit message with a final line referencing the issue. The
-  form is the word `Issue`, the issue number, then the issue's real title —
-  nothing else. No braces, brackets, quotes, or other punctuation wrapping
-  either part. Look the title up rather than guessing it.
+    7. Use the body for the _why_, and only the _why_. The _what_ is
+       already in the subject line and the diff; the _how_ is the diff.
+- Keep bodies short. One or two sentences of rationale is usually the
+  right length. Boilerplate and setup work needs less, not more.
+- End the body with a line referencing the issue. The form is the word `Issue`,
+  the issue number, then the issue's real title — nothing else. No braces,
+  brackets, quotes, or other punctuation wrapping either part. Look the title up
+  rather than guessing it.
 
     ```
     Issue #142 Fix login redirect loop
@@ -40,6 +55,21 @@ take precedence where they conflict.
 
     Not `Issue #142 {Fix login redirect loop}` — any placeholder markup in these
     instructions indicates text to replace, and never appears in the output.
+
+    This line is body copy, not a trailer. It is the last thing a human reads,
+    so it closes the prose — it is not a metadata field, and it does not take a
+    `Key: value` form. The trailer block (`Co-Authored-By:`, `Claude-Session:`,
+    `Signed-off-by:`, and anything else machine-parsed) follows it, separated by
+    a blank line, and is always the true end of the message:
+
+    ```
+    Use the body to explain what changed and why.
+
+    Issue #142 Fix login redirect loop
+
+    Co-Authored-By: ...
+    Claude-Session: ...
+    ```
 
 ## AI attribution
 
@@ -73,3 +103,8 @@ the trailer goes on then.
 
 - Make the smallest change that fully solves the problem; avoid unrelated churn.
 - Run the project's formatter/linter before considering a change done.
+- Avoid code comments; write self-documenting code instead. The urge to write
+  a comment is a signal to reconsider the code: if it is complex enough to need
+  explaining, extract a well-named helper function, constant, or variable that
+  says it. Rationale that still needs saying belongs in the project's docs or
+  the commit message, not in the code.
