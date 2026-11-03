@@ -24,6 +24,7 @@ brew 'htop'
 brew 'hub'
 brew 'imagemagick'
 brew 'jenv'
+brew 'jq' # Used by the Claude Code status line
 brew 'kubernetes-cli'
 brew 'lame' # mp3 encoder, needed for audacity
 brew 'libevent'

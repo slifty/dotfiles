@@ -69,5 +69,9 @@
 	"effortLevel": "high",
 	"skipWorkflowUsageWarning": true,
 	"skipAutoPermissionPrompt": true,
-	"theme": "auto"
+	"theme": "auto",
+	"statusLine": {
+		"type": "command",
+		"command": "~/.claude/statusline-account.sh"
+	}
 }

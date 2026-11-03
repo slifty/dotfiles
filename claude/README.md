@@ -5,8 +5,8 @@ Global configuration for [Claude Code](https://claude.ai/code).
 ## What this topic does
 
 - Installs Claude Code via the native installer (`install.sh`)
-- Symlinks every file in `config/` → `~/.claude/` (currently `settings.json`
-  and `CLAUDE.md`)
+- Symlinks every file in `config/` → `~/.claude/` (currently `settings.json`,
+  `CLAUDE.md` and `statusline-account.sh`)
 - Sets up a separate [Permanent profile](#permanent-profile) for repositories
   in the Permanent workspace
 
@@ -35,6 +35,7 @@ Current keys:
 | `attribution`              | Strips the `Co-Authored-By` trailer from commits      |
 | `spinnerVerbs`             | Custom "thinking" phrases (see below)                 |
 | `theme`                    | Follow the system light/dark appearance               |
+| `statusLine`               | Shows the signed-in account and organization          |
 
 ## Commit attribution
 
@@ -106,9 +107,6 @@ personal profile unless `CLAUDE_CONFIG_DIR` is set for them.
 
 Not set up yet, but easy to add as their own symlinked files in this topic:
 
-- **Custom statusLine** — a `statusLine` command in `settings.json` pointed at a
-  script (e.g. `config/statusline.sh`) can show cwd, git branch, model, and
-  context usage.
 - **Spinner tips** — `spinnerTipsEnabled` (bool) and `spinnerTipsOverride`
   (string) control the hint line under the spinner.
 - **Output style** — `outputStyle` (e.g. `"Explanatory"`) adjusts response style.
