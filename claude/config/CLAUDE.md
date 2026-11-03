@@ -71,6 +71,20 @@ take precedence where they conflict.
     Claude-Session: ...
     ```
 
+## Pull requests
+
+- Keep PR descriptions short. Lead with "This PR …" and say what it changes
+  about the project — behaviour, capability, policy — not how the code does it.
+  The diff carries the implementation; leave out file-by-file walkthroughs and
+  design minutiae unless a reviewer needs them to judge the change.
+- A brief Testing section saying what was actually run is still useful; keep it
+  to a few lines.
+- Detail that only an automated reviewer needs (exact rules, evidence,
+  implementation notes) goes in a collapsed section at the end:
+  `<details><summary>Notes for agentic reviewers</summary> … </details>`.
+  The same pattern applies to docs meant for people: principles and short
+  step lists up top, implementation specifics collapsed.
+
 ## AI attribution
 
 This governs **prose Claude wrote for a human to read** — commit messages, PR
