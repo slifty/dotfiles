@@ -1,11 +1,10 @@
 {
 	"$schema": "https://claude.ai/schemas/claude-code/settings.json",
-	"alwaysThinkingEnabled": true,
-	"effortLevel": "high",
-	"skipAutoPermissionPrompt": true,
-	"skipWorkflowUsageWarning": true,
+	"attribution": {
+		"commit": "",
+		"sessionUrl": true
+	},
 	"permissions": {
-		"defaultMode": "auto",
 		"allow": [
 			"Bash(npm run test)",
 			"Bash(npm run lint)",
@@ -13,10 +12,8 @@
 			"Bash(gh issue view*)",
 			"Bash(gh pr view*)"
 		],
-		"deny": ["Bash(sed -i *)"]
-	},
-	"attribution": {
-		"sessionUrl": true
+		"deny": ["Bash(sed -i *)"],
+		"defaultMode": "auto"
 	},
 	"spinnerVerbs": {
 		"mode": "replace",
@@ -67,5 +64,9 @@
 			"Upsetting an apple cart",
 			"Pelting somebody's house with eggs"
 		]
-	}
+	},
+	"alwaysThinkingEnabled": true,
+	"effortLevel": "high",
+	"skipWorkflowUsageWarning": true,
+	"skipAutoPermissionPrompt": true
 }

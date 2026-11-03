@@ -1,7 +1,7 @@
 if test $(command -v nvm); then
-	echo "Setting up nvm (and installing latest stable node)"
+	echo "Setting up nvm (and installing latest LTS node)"
 	nvm install --lts
-	nvm alias default stable
+	nvm alias default 'lts/*'
 fi
 
 if test $(which npm); then
