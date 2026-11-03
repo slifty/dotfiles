@@ -7,6 +7,7 @@ local/automount.sh
 
 # Track the global Claude instructions despite a global CLAUDE.md ignore
 !claude/config/CLAUDE.md
+!claude/permanent/CLAUDE.md
 
 # Node.js
 node_modules/

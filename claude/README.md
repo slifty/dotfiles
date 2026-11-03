@@ -7,6 +7,8 @@ Global configuration for [Claude Code](https://claude.ai/code).
 - Installs Claude Code via the native installer (`install.sh`)
 - Symlinks every file in `config/` → `~/.claude/` (currently `settings.json`
   and `CLAUDE.md`)
+- Sets up a separate [Permanent profile](#permanent-profile) for repositories
+  in the Permanent workspace
 
 The symlinks are created at provision time by `install.sh`, which `bootstrap.sh`
 runs automatically. It follows the same nested-config pattern as
@@ -71,6 +73,33 @@ preferences that apply to **every** project (working style, git habits, editing
 defaults). Project-level `CLAUDE.md` files take precedence where they conflict.
 Edit it directly — keep it cross-project; project-specific rules belong in that
 project's own `CLAUDE.md`.
+
+## Permanent profile
+
+Repositories under the Permanent workspace (`~/Code/permanent` by default;
+override with `CLAUDE_PERMANENT_ROOT`) run Claude Code against a separate
+configuration directory, `~/.claude-permanent`, so they sign in to the
+Permanent account while everything else keeps the personal one.
+
+- `permanent.zsh` wraps `claude`: inside the workspace it sets
+  `CLAUDE_CONFIG_DIR`, layers `permanent/settings.json` over the base settings
+  with `--settings`, and loads the Tank plugins listed in
+  `CLAUDE_PERMANENT_PLUGINS` straight from the local checkout with
+  `--plugin-dir`, so plugin edits apply on the next session without a
+  reinstall. `command claude` skips the wrapper.
+- `install.sh` links `~/.claude-permanent/settings.json` to the base
+  `config/settings.json`, so the profile inherits every base setting, and
+  `~/.claude-permanent/CLAUDE.md` to `permanent/CLAUDE.md`, which imports the
+  base `CLAUDE.md` before adding Permanent-only instructions.
+- `~/.claude-permanent/projects` links to `~/.claude/projects`, so session
+  history and auto-memory for Permanent repositories carry over.
+- Put Permanent-only settings in `permanent/settings.json`; lists such as
+  `permissions.allow` merge with the base rather than replace it.
+- Run `/login` once in a Permanent repository to sign in to the Permanent
+  account; its credentials are stored separately from the personal account.
+
+Editors and the desktop app don't go through the shell wrapper, so they use the
+personal profile unless `CLAUDE_CONFIG_DIR` is set for them.
 
 ## Other global configs worth considering
 
