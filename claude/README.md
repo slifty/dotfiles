@@ -34,6 +34,7 @@ Current keys:
 | `permissions`              | `defaultMode: auto`, plus an explicit allow/deny list |
 | `attribution`              | Strips the `Co-Authored-By` trailer from commits      |
 | `spinnerVerbs`             | Custom "thinking" phrases (see below)                 |
+| `theme`                    | Follow the system light/dark appearance               |
 
 ## Commit attribution
 
