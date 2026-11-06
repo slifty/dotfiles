@@ -82,8 +82,9 @@ take precedence where they conflict.
 - Detail that only an automated reviewer needs (exact rules, evidence,
   implementation notes) goes in a collapsed section at the end:
   `<details><summary>Notes for agentic reviewers</summary> … </details>`.
-  The same pattern applies to docs meant for people: principles and short
-  step lists up top, implementation specifics collapsed.
+  That section belongs only in PRs, never in files committed to the repo.
+- Docs meant for people follow a similar shape: principles and short step
+  lists up top, implementation specifics further down or collapsed.
 
 ## AI attribution
 
