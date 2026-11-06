@@ -68,5 +68,10 @@
 	"alwaysThinkingEnabled": true,
 	"effortLevel": "high",
 	"skipWorkflowUsageWarning": true,
-	"skipAutoPermissionPrompt": true
+	"skipAutoPermissionPrompt": true,
+	"theme": "auto",
+	"statusLine": {
+		"type": "command",
+		"command": "~/.claude/statusline-account.sh"
+	}
 }
